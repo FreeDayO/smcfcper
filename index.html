@@ -1,0 +1,56 @@
+<!doctype html><html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>smcfcper</title>
+		<link rel="app icon" type="image/png" href="assets/imgs/smcfcper.png">
+		<link rel="stylesheet" type="text/css" href="assets/stylesheets/style.css">
+		<script type="text/javascript" src="https://fastly.jsdelivr.net/gh/jquery/jquery@3.5.1/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="assets/scripts/smcfcper.loader.js"></script>
+		<link rel="stylesheet" type="text/css" href="assets/plugins/fira_code/fira_code.css">
+		<link rel="stylesheet" type="text/css" href="assets/plugins/fontawesome-free-6.5.2-web/css/all.min.css">
+		<link rel="stylesheet" type="text/css" href="assets/plugins/highlight.js/styles/github-dark.min.css">
+		<script type="text/javascript" src="assets/plugins/highlight.js/highlight.min.js"></script>
+		<script type="text/javascript" src="assets/plugins/highlight.js/languages/smcf.js.js"></script>
+		<script type="text/javascript" src="assets/plugins/highlight.js/languages/mcf.js"></script>
+		<!--<script type="text/javascript" src="assets/plugins/hljs.linenum/js/linenum.js"></script>
+		<link rel="stylesheet" type="text/css" href="assets/plugins/hljs.linenum/css/linenum.css">-->
+		<script>
+			hljs.highlightAll();
+			// hljs.initLineNumbersOnLoad();
+			const onLoaded = function() {
+				document.querySelector("body").style.cssText = 'background: url(\'https://api.sretna.cn/layout/pe.php\') fixed no-repeat center; background-size: auto 100%;';
+				document.querySelector("dialog").style.display = "none";
+			}
+			loadSmcfcperModules();
+		</script>
+	</head>
+
+	<body style="pointer-events: none;">
+		<noscript>
+			<dialog>
+				smcfcper 需要 JavaScript 权限才能正常工作<br>
+				请检查您的浏览器设置后再试<br>
+			</dialog>
+		</noscript>
+
+		<dialog open><i class="fa-solid fa-circle-notch fa-spin"></i>很快就好...</dialog>
+
+		<i class="tab">SMCFcper</i>
+		<div class="box">
+			<div class="codeBox" style="position: relative;">
+				<label for="code" style="">在这里码代码:</label>
+				<pre><code class="language-javascript" id="codeHl" nonum></code></pre>
+				<div contenteditable="true" id="code">say("Hello, smcf.js!");</div>
+				<!-- <textarea id="code">say("Hello, smcf.js!");</textarea> -->
+			</div>
+			<i class="fa-solid fa-arrow-down fa-3x"></i>
+			<div class="resultBox">
+				<label for="result">编译结果:</label>
+				<pre><code class="language-mcf" id="result"># 编译姬: >.<</code></pre>
+			</div>
+			<input type="submit" name="submit" onclick="smcfCper.main();">
+		</div>
+
+	</body>
+</html>

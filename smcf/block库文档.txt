@@ -1,0 +1,16 @@
+* 注意smcf语法与js相同且可以代码互用
+* FreeDayo 2024-1-17 李君子制作
+* block是内置的smcf库 无需引用即可使用
+
+* 函数方法
+    * block.add(方块,x,y,z) 生成方块指令，返回xyz
+    * block.kill(x,y,z) 清除某地的方块，不反回任何值
+    * block.fill(xyz,toxyz,方块) 生成填充指令
+    * block.copy(xyz,xyz2,xyz3,其他) 其他默认为"" 可选填 生成clone指令
+    * linear(x,y,z,2x,2y,2z,方块,长度) 两点拉线延长
+    * Rinear(同linear) 功能同linear 只不过生成相对坐标
+    
+* 可调用的值
+    * block.about 代表~
+    * default_x,default_y,default_z 代表坐标值(0)
+    * PI 代表π

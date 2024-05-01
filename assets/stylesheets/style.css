@@ -1,0 +1,170 @@
+/* 
+ * style.css
+ */
+
+@keyframes color {
+	0%  {color: red;}
+	8.3%  {color: orange;}
+	16.6% {color: yellow;}
+	24.9% {color: green;}
+	33.2% {color: blue;}
+	41.5% {color: indigo;}
+	49.8% {color: violet;}
+	58.1% {color: indigo;}
+	66.4% {color: blue;}
+	74.7% {color: green;}
+	83% {color: yellow;}
+	91.3% {color: orange;}
+	100% {color: red;}
+}
+@keyframes bgColor {
+	0%  {background: red;}
+	8.3%  {background: orange;}
+	16.6% {background: yellow;}
+	24.9% {background: green;}
+	33.2% {background: blue;}
+	41.5% {background: indigo;}
+	49.8% {background: violet;}
+	58.1% {background: indigo;}
+	66.4% {background: blue;}
+	74.7% {background: green;}
+	83% {background: yellow;}
+	91.3% {background: orange;}
+	100% {background: red;}
+}
+@keyframes textCurColor {
+	0%  {caret-color: red;}
+	8.3%  {caret-color: orange;}
+	16.6% {caret-color: yellow;}
+	24.9% {caret-color: green;}
+	33.2% {caret-color: blue;}
+	41.5% {caret-color: indigo;}
+	49.8% {caret-color: violet;}
+	58.1% {caret-color: indigo;}
+	66.4% {caret-color: blue;}
+	74.7% {caret-color: green;}
+	83% {caret-color: yellow;}
+	91.3% {caret-color: orange;}
+	100% {caret-color: red;}
+}
+#window {
+	position: relative;
+	/*display: flex;*/
+	background: #000a;
+	padding: 2px;
+	border-radius: 0 0 10px 10px;
+}
+.fa, .fa-solid {
+	animation: color 15s infinite;
+	margin-top: 36px;
+	margin-left: 20px;
+}
+
+#script_loader {
+	display: none;
+}
+.hljs {
+	border-radius: 10px;
+}
+.panel {
+
+}
+input[type="submit"] {
+	animation: bgColor 15s infinite;
+	font-size: 16px;
+	border-radius: 10px;
+}
+.tab {
+	padding: 2px;
+	margin-top: -10px;
+	margin-left: -8px;
+	background: url(../imgs/smcfcper.tab.png) fixed no-repeat;
+	background-size: 100% auto;
+	color: transparent;
+	/* border-radius: 0 0 10px 10px; */
+	font-size: 40px;
+	position: fixed;
+	z-index: 100;
+	width: 100%;
+	/* text-shadow: #ccc 2px 2px 3px;
+	animation: color 5s infinite; */
+	/* box-shadow: 0 1px black; */
+}
+.box {
+	padding: 2px;
+	padding-top: 64px;
+	background-color: #fffa;
+	border-radius: 10px;
+	border: 1px solid #fff;
+	display: flex;
+}
+dialog {
+
+		position: absolute;
+		z-index: 100;
+		font-size: 32px;
+		top: calc(50vh);
+		color: white;
+		background: black;
+		border-radius: 10px;
+		box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+		
+}
+body {
+	background: url('https://api.sretna.cn/layout/pe.php') fixed no-repeat center;
+	background-size: auto 100%;
+}
+
+label {
+	padding: 5px;
+	font-size: 24px;
+	font-weight: bold;
+	background: black;
+	color: white;
+	border-radius: 10px 10px 0;
+}
+code, #code {
+	font-family: "fira code";
+	font-size: 20px;
+	font-weight: normal;
+}
+#code {
+	animation: textCurColor 15s infinite;
+}
+#code, #codeHl {
+	position: absolute;
+}
+code#codeHl {
+	z-index: 9;
+	max-width: calc(100vw);
+}
+div#code {
+	overflow-x: auto;
+	padding: 1em;
+	z-index: 10;
+	color: transparent;
+}
+@media screen and (max-width: 720px) {
+	/* 适配手机显示 */
+	.box {
+	flex-direction: column;
+		height: 100%;
+	}
+	.codeBox, .reslutBox {
+		height: 45%;
+	}
+	.fa, .fa-solid {
+		margin-top: 50%;
+		margin-left: 20px;
+	}
+	#window {
+		/* flex-flow: column; */
+	}
+	#code, #codeHl {
+		top: 36px;
+	}
+	label {
+
+		margin-top: 15px;
+	}
+}

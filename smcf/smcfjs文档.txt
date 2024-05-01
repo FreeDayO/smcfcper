@@ -1,0 +1,29 @@
+* 注意smcf语法与js相同且可以代码互用
+* FreeDayo 2024-1-13 李君子制作
+
+* 方法使用
+    * say(文本) 生成say指令并输出批注 返回say的内容
+    * give(物品id,数量,破损,谁) 生成give指令 返回物品id 后三者可选
+    * tick(指令,多少次) 重复书写同一指令多少次 返回重复了多少次
+    * kill(大选择器,筛选器) 生成kill指令 并返回kill的生物的id 筛选器可选添加
+    * header(库名称) 引用smcfjs库
+    * mcfunction(名) 生成function指令
+    * path() 返回并输出文件名
+    * command(指令) 输出指令
+    * table(表内容) █制表
+    * tp(从,至) 生成传送指令
+    * tpeasy(到哪里) 生成单坐标传送指令
+    * Bn(十进制数字) 10进制转换为2进制
+    * random(最大值) 整数随机
+    * clear(物品,数量) 数量是可选的 生成clear指令
+    * setblock(方块,坐标) 生成setblock指令
+    * Rn(数字) 返回带~的数字
+    
+* 全局变量
+    * __PATH__ 文件名称
+    * __SUFFIX__ 文件后缀
+    * EOL 空行
+    * _字母 大选择器比如 _a 等同于 @a
+    
+* 开源协议
+    * 我们要求所有smcf编译成的mcfunction文件里都带有smcf源码 其他的不做管制

@@ -1,0 +1,74 @@
+	---
+	file: scb.txt
+	name: smcf.js scoreboard 命令库说明文档
+	author: XiaozhiSans
+	release date: 2024/01/25
+	update date: 2024/03/25
+	---
+
+可用函数
+	记分板类（项目类）
+	> scb.ls(); // 输出所有记分板
+	> scb.crt(internalName, [displayName]); // 创建记分板
+	> scb.del(internalName); // 删除记分板
+	> scb.setDPMD([internalName], displayMethod, [reverse]); // 设置记分板显示区域
+
+	记分项类（玩家类）
+	> scb.output(target); // 输出目标的所有记分项
+	> scb.setRand(target, internalName, min, max); // 范围内随机赋值
+	> scb.test(target, internalName, min, [max]); // 测试记分项是否在范围内
+	> scb.remove(target, [internalName]); // 移除目标的记分项
+	> scb.oper(target, internalName, operator, count); // 对记分项进行简单运算
+	> scb.operPro(target, internalName, operator, target2, internalName2); // 对记分项进行高级运算
+
+参	数
+	> [argument] 为可省略参数，使用"#"以省略该参数
+	> internalName(2) 为记分板内部名称，用于对记分板进行操作，参考值：
+		- "OnlineTime"
+		- "DeathCount"
+	> displayName 为记分板显示名称，在使用scb.setDisplay();后显示在对应区域的名称，参考值：
+		- "在线时间"
+		- "死亡次数"
+	> displayMethod 为显示方法，可用值：
+		- "list" // 列表
+		- "sidebar" // 边栏
+		- "belowname" // 衬于名字下方
+	> reverse 为使用逆序排列，可用值：
+		- "false" // 关闭
+		- "true" // 开启
+		- "#" // 省略
+	> target(2) 为目标，参考值：
+		- "XiaozhiSans"
+		- _A // 见"smcfjs文档"
+		- "@e[type=\"player\"]"
+	> min 为整型数最小值，参考值：
+		- 1024
+		- -1024
+		- "*" // 仅适用于scb.test();
+	> max 为整型最大值，参考值：
+		- 1024
+		- -1024
+		- "*" // 仅适用于scb.test();
+	> operator 为运算符，可用值：
+		+ 对于scb.operation();
+			- "add"||"+" // 加
+			- "remove"||"-" // 减
+			- "set"||"=" // 赋值
+		+ 对于scb.proOper();
+			- "+=" // 求和
+			- "-=" // 求差 
+			- ">=" // 求积
+			- "/=" // 求商
+			- "%=" // 求余
+			- "=" // 赋值
+			- "<" // 取较小值
+			- ">" // 取较大值
+			- "><" // 交换选择器与目标名称的分数。 除><外，选择器在记分项上的分数会保持不变。它还可填在目标名称或选择器（但不能同时）用以代表所有正在被记分板追踪的实体。
+
+
+故障排查
+	> 我不知道用不用得上就是了..→_→
+	> invalid arguments!
+		- 请检查 displayMethod 和 reverse 参数是否填写正确
+	> invalid operator!
+		- 请检查 operator 参数是否填写正确
