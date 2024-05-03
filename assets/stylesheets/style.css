@@ -2,9 +2,14 @@
  * style.css
  */
 
+body {
+	background: url('https://api.sretna.cn/layout/pe.php') fixed no-repeat center;
+	background-size: auto 100%;
+}
+
 @keyframes color {
-	0%  {color: red;}
-	8.3%  {color: orange;}
+	0%	{color: red;}
+	8.3%	{color: orange;}
 	16.6% {color: yellow;}
 	24.9% {color: green;}
 	33.2% {color: blue;}
@@ -18,8 +23,8 @@
 	100% {color: red;}
 }
 @keyframes bgColor {
-	0%  {background: red;}
-	8.3%  {background: orange;}
+	0%	{background: red;}
+	8.3%	{background: orange;}
 	16.6% {background: yellow;}
 	24.9% {background: green;}
 	33.2% {background: blue;}
@@ -33,8 +38,8 @@
 	100% {background: red;}
 }
 @keyframes textCurColor {
-	0%  {caret-color: red;}
-	8.3%  {caret-color: orange;}
+	0%	{caret-color: red;}
+	8.3%	{caret-color: orange;}
 	16.6% {caret-color: yellow;}
 	24.9% {caret-color: green;}
 	33.2% {caret-color: blue;}
@@ -56,8 +61,8 @@
 }
 .fa, .fa-solid {
 	animation: color 15s infinite;
-	margin-top: 36px;
-	margin-left: 20px;
+		margin-top: 10px;
+		margin-left: 20px;
 }
 
 #script_loader {
@@ -78,7 +83,7 @@ input[type="submit"] {
 	padding: 2px;
 	margin-top: -10px;
 	margin-left: -8px;
-	background: url(../imgs/smcfcper.tab.png) fixed no-repeat;
+	background: url(../images/smcfcper.tab.png) fixed no-repeat;
 	background-size: 100% auto;
 	color: transparent;
 	/* border-radius: 0 0 10px 10px; */
@@ -90,6 +95,20 @@ input[type="submit"] {
 	animation: color 5s infinite; */
 	/* box-shadow: 0 1px black; */
 }
+.sidebar {
+	padding: 10px;
+	position: fixed;
+	top: calc(45vh);
+	right: calc(-10vw);
+	background-color: #3456;
+	border-radius: 10px;
+	transition: right 2s;
+	font-size: 20px;
+	animation: color 15s infinite;
+}
+.sidebar:hover, .sidebar:focus {
+	right: 0;
+}
 .box {
 	padding: 2px;
 	padding-top: 64px;
@@ -97,7 +116,12 @@ input[type="submit"] {
 	border-radius: 10px;
 	border: 1px solid #fff;
 	display: flex;
+	flex-direction: column;
+	height: 100%;
 }
+	.codeBox, .reslutBox {
+		height: 45%;
+	}
 dialog {
 
 		position: absolute;
@@ -110,61 +134,94 @@ dialog {
 		box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 		
 }
-body {
-	background: url('https://api.sretna.cn/layout/pe.php') fixed no-repeat center;
-	background-size: auto 100%;
-}
 
 label {
+	margin-top: 15px;
 	padding: 5px;
 	font-size: 24px;
 	font-weight: bold;
 	background: black;
 	color: white;
-	border-radius: 10px 10px 0;
+	border-radius: 10px;
 }
 code, #code {
 	font-family: "fira code";
 	font-size: 20px;
 	font-weight: normal;
 }
-#code {
-	animation: textCurColor 15s infinite;
+.codeBox {
+	display: grid;
 }
-#code, #codeHl {
-	position: absolute;
+#code, #codeHlP {
+	grid-area: 2 / 1 / 3 / 2;
 }
-code#codeHl {
-	z-index: 9;
+code#codeHl, #codeHlP {
 	max-width: calc(100vw);
 }
 div#code {
 	overflow-x: auto;
 	padding: 1em;
-	z-index: 10;
 	color: transparent;
+	z-index: 1;
+	margin-top: 12px;
+	animation: textCurColor 15s infinite;
 }
-@media screen and (max-width: 720px) {
-	/* 适配手机显示 */
-	.box {
-	flex-direction: column;
-		height: 100%;
+button.iconBtn {
+	border: none;
+	background-color: transparent;
+}
+button.iconBtn:hover {
+	-webkit-animation-name: fa-bounce;
+					animation-name: fa-bounce;
+	-webkit-animation-delay: var(--fa-animation-delay, 0s);
+					animation-delay: var(--fa-animation-delay, 0s);
+	-webkit-animation-direction: var(--fa-animation-direction, normal);
+					animation-direction: var(--fa-animation-direction, normal);
+	-webkit-animation-duration: var(--fa-animation-duration, 1s);
+					animation-duration: var(--fa-animation-duration, 1s);
+	-webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+					animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+	-webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+					animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+}
+
+[tooltip]:hover::before, [tooltip]:focus::before {
+	padding: 6px;
+	display: block;
+	content: attr(tooltip);
+	position: absolute;
+	margin-top: -40px;
+	background-color: #2333;
+	border-radius: 10px;
+	z-index: 10;
+	text-align: center;
+	font-size: 20px;
+	animation: color 15s infinite;
+	pointer-events: none;
+}
+
+@media screen and (min-width: 1000px) {
+	/* 适配pc显示 */
+	body {
+		background: url('https://api.sretna.cn/layout/pc.php') fixed no-repeat center;
+		background-size: 100% auto;
 	}
-	.codeBox, .reslutBox {
-		height: 45%;
+	.tab {
+		height: calc(8vh);
+		background-size: auto 100px;
+	}
+	.sidebar {
+		right: calc(-4vw);
 	}
 	.fa, .fa-solid {
-		margin-top: 50%;
+		margin-top: 36px;
 		margin-left: 20px;
 	}
 	#window {
-		/* flex-flow: column; */
+		flex-flow: row;
 	}
 	#code, #codeHl {
-		top: 36px;
 	}
 	label {
-
-		margin-top: 15px;
 	}
 }
