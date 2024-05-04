@@ -4,7 +4,7 @@ const result = document.querySelector("#result");
 const smcfcper = {
 	appName: "SMCFCompiler",
 	appNameShort: "smcfcper",
-	version: "v1.1.0",
+	version: "v1.1.4",
 	buildVer: "(20240504)",
 	buildType: "Beta",
 	license: "",
@@ -26,7 +26,10 @@ const smcfcper = {
 	},
 	clear: function(btn) {
 		let wordCount = result.innerText.split('').length;
-		result.innerText = "# 编译姬: ♪(´▽`) 已经清理完毕! 清理了 " + wordCount + " 个字符."
+		let text = "# 编译姬: ♪(´▽`) 已经清理完毕!";
+		let showWordCount = false;
+		showWordCount? text += " 清理了 " + wordCount + " 个字符.": text += '';
+		result.innerText = text;
 		result.removeAttribute("data-highlighted");
 		btn.setAttribute("tooltip", "已清屏!");
 		setTimeout(function() {
@@ -35,7 +38,17 @@ const smcfcper = {
 	}
 }
 
-smcfcper.reload = loadSmcfcperModules;
+const addFunToCper = function(fN, f) {
+	let add = `smcfcper.${fN} = ${f}`;
+	eval(add);
+	let del = `${f} = undefined`;
+	eval(del);
+}
+
+addFunToCper("reload", "loadSmcfcperModules");
+
+onLoaded();
+onLoaded = undefined;
 
 var logDebug = false;
 console.log = (function (oriLogFunc) {

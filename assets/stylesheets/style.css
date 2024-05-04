@@ -74,7 +74,7 @@ body {
 .panel {
 
 }
-input[type="submit"] {
+[type="submit"] {
 	animation: bgColor 15s infinite;
 	font-size: 16px;
 	border-radius: 10px;
@@ -119,19 +119,19 @@ input[type="submit"] {
 	flex-direction: column;
 	height: 100%;
 }
-	.codeBox, .reslutBox {
-		height: 45%;
-	}
+.codeBox, .reslutBox {
+	height: 45%;
+}
 dialog {
-
-		position: absolute;
-		z-index: 100;
-		font-size: 32px;
-		top: calc(50vh);
-		color: white;
-		background: black;
-		border-radius: 10px;
-		box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+	margin-top: -20px;
+	position: absolute;
+	z-index: 100;
+	font-size: 32px;
+	top: calc(50vh);
+	color: white;
+	background: black;
+	border-radius: 10px;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 		
 }
 
@@ -198,6 +198,7 @@ button.iconBtn:hover {
 	font-size: 20px;
 	animation: color 15s infinite;
 	pointer-events: none;
+	width: 100px;
 }
 
 @media screen and (min-width: 1000px) {

@@ -29,15 +29,11 @@
 		<script type="text/javascript" src="assets/plugins/highlight.js/languages/mcf.js"></script>
 		<!--<script type="text/javascript" src="assets/plugins/hljs.linenum/js/linenum.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/plugins/hljs.linenum/css/linenum.css">-->
-		<link rel="smcfcperModulesCfg" type="text" href="assets/plugins/smcfcper/smcfcper.modules.cfg">
 		<script>
-			hljs.highlightAll();
 			// hljs.initLineNumbersOnLoad();
-			const onLoaded = function() {
-				document.querySelector("body").style.cssText = '';
-				document.querySelector("dialog").style.display = "none";
+			let onLoaded = function() {
+				document.querySelector("dialog").removeAttribute("open");
 			}
-			loadSmcfcperModules();
 			if(navigator.serviceWorker) {
 				navigator.serviceWorker.register('sw.js')
 				.then(function(registration) {
@@ -55,7 +51,7 @@
 			</dialog>
 		</noscript>
 
-		<dialog open><i class="fa-solid fa-circle-notch fa-spin" style="margin-top: -20px;"></i>很快就好...</dialog>
+		<dialog open><i class="fa-solid fa-circle-notch fa-spin"></i>很快就好...</dialog>
 
 		<i class="tab">SMCFcper</i>
 		<div class="box">
@@ -65,14 +61,15 @@
 				<div contenteditable="true" id="code">say("Hello, smcf.js!");</div>
 				<!-- <textarea id="code">say("Hello, smcf.js!");</textarea> -->
 			</div>
-			<i class="fa-solid fa-arrow-down fa-3x" tooltip="你怎么知道我也能帮你编译的?" onclick="smcfcper.main();"></i>
+			<i class="fa-solid fa-arrow-down fa-3x" onclick="smcfcper.main();"></i>
 			<div class="resultBox">
 				<label for="result">mcfunction 代码</label>
-				<button class="iconBtn" onclick="smcfcper.copy(this);" tooltip="复制"><i class="fa-solid fa-copy fa-2x"></i></button>
-				<button class="iconBtn" onclick="smcfcper.clear(this);" tooltip="清屏"><i class="fa-solid fa-eraser fa-2x"></i></button>
-				<pre><code class="language-mcf" id="result"># 编译姬: ( •̀ ω •́ )✧ 欢迎, cper会全力帮助你把smcf编译为mcf的~</code></pre>
+				<button class="iconBtn" onclick="smcfcper.copy(this);" tooltip="复制(Ctrl + C)"><i class="fa-solid fa-copy fa-2x"></i></button>
+				<button class="iconBtn" onclick="smcfcper.clear(this);" tooltip="清屏(Ctrl + Del)"><i class="fa-solid fa-eraser fa-2x"></i></button>
+				<pre><code class="language-mcf" id="result"># 编译姬: ( •̀ ω •́ )✧ 欢迎~</code></pre>
 			</div>
-			<input type="submit" name="submit" onclick="smcfcper.main();">
+			<!-- <input type="submit" name="submit" onclick="smcfcper.main();"> -->
+			<button type="submit" onclick="smcfcper.main();">提交(<code>Ctrl</code> + <code>Enter</code>)</button>
 		</div>
 
 		<details class="sidebar">
