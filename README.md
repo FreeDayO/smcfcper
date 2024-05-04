@@ -1,4 +1,6 @@
-#  <img src="assets/images/smcfcper.icon.png" alt="logo" style="zoom:25%;" />SMCFcper
+#  ![smcfcpertab](assets/images/smcfcper.tab.png)
+
+##  SMCFcper
 
 全称 ***smcf.js compiler***,即 ***smcf编译器***
 
@@ -6,7 +8,7 @@
 
 ---
 
-# 如何使用
+## 如何使用
 
 1. [XiaozhiSans' blog站点](https://xiaozhisans.github.io/smcfcper/)
 
@@ -18,7 +20,7 @@
    4. 打开对应页面
    
 ---
-# 待办
+## 待办
 
 
 0. 有什么建议可以提 issues 或者联系我
@@ -32,7 +34,28 @@
 
 ---
 
-# 协议
+## 感谢
+
+smcfcper 的诞生离不开这些项目:
+
+0. 排名不分前后
+
+1. [BuTian103/smcf.js](https://github.com/BuTian103/smcf.js)
+2. [tonsky/FiraCode](https://github.com/tonsky/FiraCode)
+3. [FortAwesome/Font-Awesome](https://github.com/FortAwesome/Font-Awesome)
+4. [highlightjs/highlight.js](https://github.com/highlightjs/highlight.js)
+5. [jquery/jquery](https://github.com/jquery/jquery)
+6. 
+
+---
+
+## 贡献者
+
+[![仓库贡献者](https://contrib.rocks/image?repo=XiaozhiSans/smcfcper)](https://github.com/XiaozhiSans/smcfcper/graphs/contributors)
+
+---
+
+## 协议
 
 `待添加`
 
