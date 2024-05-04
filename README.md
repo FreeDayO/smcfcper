@@ -45,7 +45,6 @@ smcfcper 的诞生离不开这些项目:
 3. [FortAwesome/Font-Awesome](https://github.com/FortAwesome/Font-Awesome)
 4. [highlightjs/highlight.js](https://github.com/highlightjs/highlight.js)
 5. [jquery/jquery](https://github.com/jquery/jquery)
-6. 
 
 ---
 
