@@ -31,9 +31,6 @@
 		<link rel="stylesheet" type="text/css" href="assets/plugins/hljs.linenum/css/linenum.css">-->
 		<script>
 			// hljs.initLineNumbersOnLoad();
-			let onLoaded = function() {
-				document.querySelector("dialog").removeAttribute("open");
-			}
 			if(navigator.serviceWorker) {
 				navigator.serviceWorker.register('sw.js')
 				.then(function(registration) {
@@ -96,6 +93,7 @@
 
 		<footer>
 			<p>
+				SMCFcper <version></version><br>
 				Copyright (c) 2024 FreeDayO Studios<br>
 				<icp></icp>
 			</p>

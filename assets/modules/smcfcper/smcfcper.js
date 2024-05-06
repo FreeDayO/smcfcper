@@ -4,12 +4,15 @@ const result = document.querySelector("#result");
 const smcfcper = {
 	appName: "SMCFCompiler",
 	appNameShort: "smcfcper",
-	version: "v1.2.0",
+	version: "v1.2.0-1",
 	buildVer: "(20240506)",
 	buildType: "Beta",
 	license: "",
 	author: "XiaozhiSans",
 	url: "",
+	getVer: function() {
+		return this.buildType + ' ' + this.version + this.buildVer;
+	},
 	main: function() {
 		result.innerText = "# 由smcfcper编译";
 		// let commentSymbols = \//\;
@@ -60,8 +63,7 @@ const addFunToCper = function(fN, f) {
 
 addFunToCper("reload", "loadSmcfcperModules");
 
-onLoaded();
-onLoaded = undefined;
+document.querySelector("dialog").removeAttribute("open");
 
 var logDebug = false;
 console.log = (function (oriLogFunc) {
@@ -72,7 +74,8 @@ console.log = (function (oriLogFunc) {
 	}
 })(console.log);
 
-console.info("[smcfcper] 核心模块加载完成, 版本: " + smcfcper.buildType + ' ' + smcfcper.version + smcfcper.buildVer);
+console.info("[smcfcper] 核心模块加载完成, 版本: " + smcfcper.getVer());
+document.querySelector("version").innerText = smcfcper.getVer();
 
 setInterval(function() {
 	// 心跳数据

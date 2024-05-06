@@ -1,4 +1,4 @@
-#  ![smcfcpertab](assets/images/smcfcper.tab.png)
+#  ![smcfcper.tab.png](assets/images/smcfcper.tab.png)
 
 ##  SMCFcper
 
