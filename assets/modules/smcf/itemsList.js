@@ -1,4 +1,4 @@
-const itemsList = [
+const items = [
     "acacia_boat",
     "acacia_button",
     "acacia_chest_boat",
