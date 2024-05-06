@@ -27,6 +27,10 @@ let loadSmcfcperModules = function() {
 						if(modu[2] == "smcf") {
 							$.getScript(smcfModuDir + modu[0]);
 						}
+						if(modu[2] == "plug") {
+							$.getScript(pluginsDir + modu[1] + '/' + modu[0]);
+							modu[2] = "cper-plug";
+						}
 						setTimeout(function() {
 							eval(modu[3])? 
 								console.info("[smcfcperLoader] " + modu[2] + "模块<" + modu[1] + ">(" + modu[0] + ") 加载完毕"):

@@ -4,8 +4,8 @@ const result = document.querySelector("#result");
 const smcfcper = {
 	appName: "SMCFCompiler",
 	appNameShort: "smcfcper",
-	version: "v1.1.4",
-	buildVer: "(20240504)",
+	version: "v1.2.0",
+	buildVer: "(20240506)",
 	buildType: "Beta",
 	license: "",
 	author: "XiaozhiSans",
@@ -17,25 +17,38 @@ const smcfcper = {
 		eval(code.innerText);
 		result.removeAttribute("data-highlighted");
 	},
-	copy: function(btn) {
-		navigator.clipboard.writeText(result.innerText);
-		btn.setAttribute("tooltip", "已复制!");
-		setTimeout(function() {
-			btn.setAttribute("tooltip", "复制");
-		}, 2000);
+	copy: function() {
+		navigator.clipboard? 
+			navigator.clipboard.writeText(result.innerText)&&
+			this.msg("已复制!"):
+			this.msg("复制失败! 您的浏览器不支持复制!");
 	},
-	clear: function(btn) {
+	clear: function() {
 		let wordCount = result.innerText.split('').length;
 		let text = "# 编译姬: ♪(´▽`) 已经清理完毕!";
 		let showWordCount = false;
 		showWordCount? text += " 清理了 " + wordCount + " 个字符.": text += '';
 		result.innerText = text;
 		result.removeAttribute("data-highlighted");
-		btn.setAttribute("tooltip", "已清屏!");
+		this.msg("已清屏!");
+	},
+	msg: function(content) {
+		document.querySelector("i#message").innerText = ' ' + content;
+		document.querySelector("div#messageBox").setAttribute("new", '');
 		setTimeout(function() {
-			btn.setAttribute("tooltip", "清屏");
+			document.querySelector("div#messageBox").removeAttribute("new");
 		}, 2000);
-	}
+		setTimeout(function() {
+			document.querySelector("i#message").innerText = '';
+		}, 4000);
+	}/* ,
+	theme: function(name) {
+		let html = document.querySelector("html");
+		name == "dark"? 
+			html.removeAttribute("light"):
+			html.setAttribute("light", '');
+		this.msg("切换完毕");
+	} */
 }
 
 const addFunToCper = function(fN, f) {
@@ -59,7 +72,7 @@ console.log = (function (oriLogFunc) {
 	}
 })(console.log);
 
-console.info("[smcfcper] 核心模块加载完成, 版本: " + smcfcper.buildType + ' ' + smcfcper.version);
+console.info("[smcfcper] 核心模块加载完成, 版本: " + smcfcper.buildType + ' ' + smcfcper.version + smcfcper.buildVer);
 
 setInterval(function() {
 	// 心跳数据

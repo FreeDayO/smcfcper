@@ -8,7 +8,7 @@ let loadCperHotkey = function() {
 		/* if(event.key == "Escape") {
 			smcfcper.exit();
 		} */
-		if(event.ctrlKey && event.key == /c|C/) {
+		if(event.ctrlKey && (event.key == "c"||event.key == "C")) {
 			smcfcper.copy();
 		}
 		if(event.ctrlKey && event.key == "Delete") {

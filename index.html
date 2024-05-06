@@ -51,35 +51,55 @@
 			</dialog>
 		</noscript>
 
-		<dialog open><i class="fa-solid fa-circle-notch fa-spin"></i>很快就好...</dialog>
+		<dialog open><i class="fa-solid fa-circle-notch fa-spin"></i>很快就好...<br><i style="font-size: 16px;">如果长时间加载请刷新页面重试</i></dialog>
 
 		<i class="tab">SMCFcper</i>
-		<div class="box">
+		<div class="box" id="mainWindow">
 			<div class="codeBox">
-				<label for="code">smcf 代码</label>
+				<label for="code"><i class="fa-solid fa-code"></i> smcf</label>
 				<pre id="codeHlP"><code class="language-javascript" id="codeHl"></code></pre>
 				<div contenteditable="true" id="code">say("Hello, smcf.js!");</div>
 				<!-- <textarea id="code">say("Hello, smcf.js!");</textarea> -->
 			</div>
-			<i class="fa-solid fa-arrow-down fa-3x" onclick="smcfcper.main();"></i>
+			<span>
+				<i class="fa-solid fa-arrow-down fa-3x arrow" onclick="smcfcper.main();" id="mobile"></i>
+				<i class="fa-solid fa-arrow-right fa-3x arrow" onclick="smcfcper.main();" id="desktop"></i>
+			</span>
 			<div class="resultBox">
-				<label for="result">mcfunction 代码</label>
-				<button class="iconBtn" onclick="smcfcper.copy(this);" tooltip="复制(Ctrl + C)"><i class="fa-solid fa-copy fa-2x"></i></button>
-				<button class="iconBtn" onclick="smcfcper.clear(this);" tooltip="清屏(Ctrl + Del)"><i class="fa-solid fa-eraser fa-2x"></i></button>
+				<label for="result"><i class="fa-solid fa-code"></i> mcfunction</label>
+				<span>
+					<button class="iconBtn" onclick="smcfcper.copy();" tooltip="复制(Ctrl + C)"><i class="fa-solid fa-copy fa-2x"></i></button>
+					<button class="iconBtn" onclick="smcfcper.clear();" tooltip="清屏(Ctrl + Del)"><i class="fa-solid fa-eraser fa-2x"></i></button>
+				</span>
 				<pre><code class="language-mcf" id="result"># 编译姬: ( •̀ ω •́ )✧ 欢迎~</code></pre>
 			</div>
 			<!-- <input type="submit" name="submit" onclick="smcfcper.main();"> -->
-			<button type="submit" onclick="smcfcper.main();">提交(<code>Ctrl</code> + <code>Enter</code>)</button>
+			<!-- <button type="submit" onclick="smcfcper.main();">提交(<code>Ctrl</code> + <code>Enter</code>)</button> -->
 		</div>
 
 		<details class="sidebar">
 			<summary>侧栏</summary>
 			<dl>
+				<!-- <dt><span>
+					<button class="iconBtn" tooltip="夜间" onclick="smcfcper.theme('dark');"><i class="fa-solid fa-cloud-moon fa-2x"></i></button>
+					<button class="iconBtn" tooltip="日间" onclick="smcfcper.theme('light');"><i class="fa-solid fa-sun fa-2x"></i></button>
+				</span></dt> -->
 				<dt><button class="iconBtn" tooltip="编译姬"><i class="fa-solid fa-code fa-2x"></i></button></dt>
 				<dt><button class="iconBtn" tooltip="设置"><i class="fa-solid fa-gear fa-2x"></i></button></dt>
 				<dt><button class="iconBtn" tooltip="关于" onclick=""><i class="fa-solid fa-face-smile fa-2x"></i></button></dt>
 			</dl>
 		</details>
+
+		<div id="messageBox">
+			<i class="fa-solid fa-message fa-shake" id="message"></i>
+		</div>
+
+		<footer>
+			<p>
+				Copyright (c) 2024 FreeDayO Studios<br>
+				<icp></icp>
+			</p>
+		</footer>
 
 	</body>
 </html>

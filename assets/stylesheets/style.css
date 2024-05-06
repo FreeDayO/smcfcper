@@ -3,7 +3,7 @@
  */
 
 body {
-	background: /* url('https://api.sretna.cn/layout/pe.php') */ #233 fixed no-repeat center;
+	background: url('https://filecdn-images.xingyeai.com/image_inference_output/nebula/prod/img/2024-04-20/c06d7c14-8858-4755-a182-0758bf04faf2-1.jpeg') fixed no-repeat center;
 	background-size: auto 100%;
 }
 
@@ -52,17 +52,10 @@ body {
 	91.3% {caret-color: orange;}
 	100% {caret-color: red;}
 }
-#window {
-	position: relative;
-	/*display: flex;*/
-	background: #000a;
-	padding: 2px;
-	border-radius: 0 0 10px 10px;
-}
 .fa, .fa-solid {
 	animation: color 15s infinite;
 		margin-top: 10px;
-		margin-left: 20px;
+		margin-left: 10px;
 }
 
 #script_loader {
@@ -81,7 +74,7 @@ body {
 }
 .tab {
 	padding: 2px;
-	margin-top: -10px;
+	margin-top: calc(-20vh);
 	margin-left: -8px;
 	background: url(../images/smcfcper.tab.png) fixed no-repeat;
 	background-size: 100% auto;
@@ -106,15 +99,16 @@ body {
 	font-size: 20px;
 	animation: color 15s infinite;
 }
-.sidebar:hover, .sidebar:focus {
+.sidebar:hover, .sidebar[open] {
 	right: 0;
 }
+.sidebar>summary {
+	user-select: none;
+}
 .box {
-	padding: 2px;
-	padding-top: 64px;
+	padding: 10px;
 	background-color: #fffa;
 	border-radius: 10px;
-	border: 1px solid #fff;
 	display: flex;
 	flex-direction: column;
 	height: 100%;
@@ -134,6 +128,13 @@ dialog {
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 		
 }
+a {
+	color: deeppink;
+	text-decoration-color: deeppink;
+}
+i, div>span {
+	user-select: none;
+}
 
 label {
 	margin-top: 15px;
@@ -143,7 +144,14 @@ label {
 	background: black;
 	color: white;
 	border-radius: 10px;
+	user-select: none;
 }
+footer {
+	position: fixed;
+	bottom: 0;
+	left: calc(50vw);
+}
+
 code, #code {
 	font-family: "fira code";
 	font-size: 20px;
@@ -166,9 +174,29 @@ div#code {
 	margin-top: 12px;
 	animation: textCurColor 15s infinite;
 }
+div#messageBox {
+	/* padding: 16px; */
+	font-size: 24px;
+	top: calc(60vh);
+	right: calc(-10vw);
+	position: fixed;
+	transition: right 2s;
+	display: inline-flex;
+	/* background-color: #1234;
+	border-radius: 10px; */
+	color: yellow;
+}
+div#messageBox[new] {
+	right: 16px;
+}
+div#mainWindow {
+	margin-top: calc(20vh);
+}
 button.iconBtn {
 	border: none;
 	background-color: transparent;
+	cursor: pointer;
+	margin: 6px;
 }
 button.iconBtn:hover {
 	-webkit-animation-name: fa-bounce;
@@ -190,7 +218,8 @@ button.iconBtn:hover {
 	display: block;
 	content: attr(tooltip);
 	position: absolute;
-	margin-top: -40px;
+	margin-top: 25px;
+	margin-left: -100px;
 	background-color: #2333;
 	border-radius: 10px;
 	z-index: 10;
@@ -201,28 +230,78 @@ button.iconBtn:hover {
 	width: 100px;
 }
 
+.arrow#mobile {
+	display: block;
+}
+.arrow#desktop {
+	display: none;
+}
+
 @media screen and (min-width: 1000px) {
 	/* 适配pc显示 */
 	body {
-		background: /* url('https://api.sretna.cn/layout/pc.php') */ #233 fixed no-repeat center;
-		background-size: 100% auto;
+		background-color: #d5d3d4;
+		background-position: right;
 	}
 	.tab {
-		height: calc(8vh);
-		background-size: auto 100px;
+		height: calc(10vh);
+		background-size: auto;
+		background-color: black;
+		margin-top: calc(-20vh);
 	}
 	.sidebar {
-		right: calc(-4vw);
+		right: calc(-2vw);
 	}
 	.fa, .fa-solid {
-		margin-top: 36px;
-		margin-left: 20px;
+		margin-top: unset;
+		margin: 2px;
 	}
-	#window {
+	.arrow#mobile {
+		display: none;
+	}
+	.arrow#desktop {
+		display: block;
+	}
+	#mainWindow {
 		flex-flow: row;
+		margin-top: calc(14vh);
 	}
-	#code, #codeHl {
+	#code, #codeHl, #result {
+		min-width: calc(35vw);
+	}
+	.codeBox {
+		margin-top: -10px;
 	}
 	label {
 	}
+	[tooltip]:hover::before, [tooltip]:focus::before {
+		margin-top: 25px;
+	}
 }
+@media (prefers-color-scheme: dark) {
+	html {
+		background-color: #181a1b !important;
+	}
+	button.iconBtn[tooltip="夜间"] {
+		display: none;
+	}
+	button.iconBtn[tooltip="日间"] {
+		display: block;
+	}
+	div.box {
+		background-color: rgba(24, 26, 27, 0.67);
+	}
+	footer {
+		color: white;
+	}
+}
+
+html {
+	transition: background-color 2s;
+}
+/* html[light] {
+	background-color: #d5d3d4;
+}
+html[light]>body>div.box {
+	background-color: #fffa;
+} */

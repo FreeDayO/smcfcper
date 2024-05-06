@@ -1,0 +1,20 @@
+name: Release smcfcper
+on:
+  push:
+    tags:
+      - 'v*'
+      - 'draft-*'
+
+jobs:
+  publishGitRelease:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          draft: false
+          prerelease: true
+          generate_release_notes: true
+          append_body: true
