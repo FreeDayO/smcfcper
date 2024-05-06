@@ -3,7 +3,7 @@
  */
 
 body {
-	background: url('https://api.sretna.cn/layout/pe.php') fixed no-repeat center;
+	background: /* url('https://api.sretna.cn/layout/pe.php') */ #233 fixed no-repeat center;
 	background-size: auto 100%;
 }
 
@@ -204,7 +204,7 @@ button.iconBtn:hover {
 @media screen and (min-width: 1000px) {
 	/* 适配pc显示 */
 	body {
-		background: url('https://api.sretna.cn/layout/pc.php') fixed no-repeat center;
+		background: /* url('https://api.sretna.cn/layout/pc.php') */ #233 fixed no-repeat center;
 		background-size: 100% auto;
 	}
 	.tab {
