@@ -116,9 +116,11 @@ body {
 .codeBox, .reslutBox {
 	height: 45%;
 }
+noscript>dialog {
+	z-index: 114514;
+}
 dialog {
 	margin-top: -20px;
-	position: absolute;
 	z-index: 100;
 	font-size: 32px;
 	top: calc(50vh);
@@ -131,6 +133,11 @@ dialog {
 a {
 	color: deeppink;
 	text-decoration-color: deeppink;
+}
+a::after {
+	font-family: "Font Awesome 6 Free";
+	font-weight: 900;
+	content: "\f35d";
 }
 i, div>span {
 	user-select: none;
@@ -180,7 +187,7 @@ div#messageBox {
 	top: calc(60vh);
 	right: calc(-10vw);
 	position: fixed;
-	transition: right 2s;
+	transition: right 1s;
 	display: inline-flex;
 	/* background-color: #1234;
 	border-radius: 10px; */
@@ -192,6 +199,28 @@ div#messageBox[new] {
 div#mainWindow {
 	margin-top: calc(20vh);
 }
+div#aboutWindow {
+	width: calc(32vw);
+	max-height: calc(65vh);
+	position: absolute;
+	top: calc(20vh);
+	left: calc(20vw);
+	z-index: 2;
+	border-radius: 10px;
+	border: 1px solid #eec;
+	cursor: move;
+	user-select: none;
+}
+/* div#aboutWindow>label {
+	position: relative;
+    height: 28px;
+    z-index: 3;
+    background: #f3f3f3;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom: 1px solid #eec;
+    cursor: move;
+} */
 button.iconBtn {
 	border: none;
 	background-color: transparent;
@@ -211,6 +240,21 @@ button.iconBtn:hover {
 					animation-iteration-count: var(--fa-animation-iteration-count, infinite);
 	-webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
 					animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+}
+button.normal {
+	padding: 16px;
+	border: none;
+	border-radius: 10px;
+	background-color: deeppink;
+	transition: background-color 2s, color 2s;
+	color: white;
+}
+button.normal:hover, button.normal:focus {
+	background-color: hotpink;
+}
+button.normal:active {
+	background-color: pink;
+	color: black;
 }
 
 [tooltip]:hover::before, [tooltip]:focus::before {
@@ -270,7 +314,7 @@ button.iconBtn:hover {
 		min-width: calc(35vw);
 	}
 	.codeBox {
-		margin-top: -10px;
+		/* margin-top: -10px; */
 	}
 	label {
 	}
@@ -279,8 +323,10 @@ button.iconBtn:hover {
 	}
 }
 @media (prefers-color-scheme: dark) {
+	/* 自适应夜间主题 */
 	html {
 		background-color: #181a1b !important;
+		color: white;
 	}
 	button.iconBtn[tooltip="夜间"] {
 		display: none;
@@ -292,7 +338,6 @@ button.iconBtn:hover {
 		background-color: rgba(24, 26, 27, 0.67);
 	}
 	footer {
-		color: white;
 	}
 }
 

@@ -4,12 +4,27 @@ const result = document.querySelector("#result");
 const smcfcper = {
 	appName: "SMCFCompiler",
 	appNameShort: "smcfcper",
-	version: "v1.2.0-1",
-	buildVer: "(20240506)",
+	version: "v1.2.1",
+	buildVer: "(20240507)",
 	buildType: "Beta",
 	license: "",
 	author: "XiaozhiSans",
-	url: "",
+	url: "",/* 
+	checkUpdate() {
+		let reslut = $.ajax({
+			url: "https://api.github.com/repos/XiaozhiSans/smcfcper/releases/latest",
+			dataType: "text/json",
+			success: function(data) {
+				let obj = JSON.parse(data);
+				let latestTag = parseFloat(obj.get("tag_name").replace('v', ''));
+				let tag = parseFloat(smcfcper.version.replace('v', ''));
+				tag < latestTag? return latestTag:
+					tag > latestTag? return 2:
+						return 0;
+			}
+		});
+		result == 1? console.info("[smcfcper] smcfcper有新版可用! 新版: " + )
+	}, */
 	getVer: function() {
 		return this.buildType + ' ' + this.version + this.buildVer;
 	},
@@ -19,6 +34,7 @@ const smcfcper = {
 		// let code_ = code.innerText.replace(commentSymbols, )
 		eval(code.innerText);
 		result.removeAttribute("data-highlighted");
+		this.msg("编译完毕!");
 	},
 	copy: function() {
 		navigator.clipboard? 
@@ -40,10 +56,10 @@ const smcfcper = {
 		document.querySelector("div#messageBox").setAttribute("new", '');
 		setTimeout(function() {
 			document.querySelector("div#messageBox").removeAttribute("new");
-		}, 2000);
+		}, 1000);
 		setTimeout(function() {
 			document.querySelector("i#message").innerText = '';
-		}, 4000);
+		}, 2000);
 	}/* ,
 	theme: function(name) {
 		let html = document.querySelector("html");
@@ -51,7 +67,19 @@ const smcfcper = {
 			html.removeAttribute("light"):
 			html.setAttribute("light", '');
 		this.msg("切换完毕");
-	} */
+	} */,
+	save: function() {
+		let blob = new Blob([result.innerText], {
+			type: "text/plain;charset=utf-8"
+		});
+		let downloadUrl = URL.createObjectURL(blob);
+		document.querySelector("a#mcf").href = downloadUrl;
+		setTimeout(function() {
+			URL.revokeObjectURL(downloadUrl);
+		}, 5000); // 5s后释放内存中存在的url
+		document.querySelector("a#mcf").click();
+		this.msg("已发送下载请求");
+	}
 }
 
 const addFunToCper = function(fN, f) {
@@ -75,7 +103,10 @@ console.log = (function (oriLogFunc) {
 })(console.log);
 
 console.info("[smcfcper] 核心模块加载完成, 版本: " + smcfcper.getVer());
-document.querySelector("version").innerText = smcfcper.getVer();
+let versions = document.querySelectorAll("version");
+for(let version of versions) {
+	version.innerText = smcfcper.getVer();
+}
 
 setInterval(function() {
 	// 心跳数据

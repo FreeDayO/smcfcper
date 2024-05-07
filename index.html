@@ -1,18 +1,17 @@
 <!doctype html><html lang="zh">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>SMCFcper</title>
 		<link rel="manifest" href="manifest.json">
 
 		<meta name="mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="application-name" content="smcfcper">
+		<meta name="application-name" content="SMCFCompiler">
 		<meta name="apple-mobile-web-app-title" content="smcfcper">
 		<meta name="theme-color" content="#003841">
 		<meta name="msapplication-navbutton-color" content="#003841">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-		<meta name="msapplication-starturl" content="/">
+		<meta name="msapplication-starturl" content="/smcfcper/">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<link rel="icon" type="image/png" sizes="192x192" href="assets/images/smcfcper.icon.png">
@@ -42,7 +41,7 @@
 
 	<body>
 		<noscript>
-			<dialog>
+			<dialog open>
 				smcfcper 需要 JavaScript 权限才能正常工作<br>
 				请检查您的浏览器设置后再试<br>
 			</dialog>
@@ -53,25 +52,59 @@
 		<i class="tab">SMCFcper</i>
 		<div class="box" id="mainWindow">
 			<div class="codeBox">
-				<label for="code"><i class="fa-solid fa-code"></i> smcf</label>
+				<span>
+					<label for="code"><i class="fa-solid fa-code"></i> smcf</label>
+					<button id="openSmcf" class="iconBtn" tooltip="打开源文件(Ctrl + O)" onclick="$('#fileInput').click();"><i class="fa-solid fa-folder-open fa-2x"></i></button>
+				</span>
 				<pre id="codeHlP"><code class="language-javascript" id="codeHl"></code></pre>
 				<div contenteditable="true" id="code">say("Hello, smcf.js!");</div>
 				<!-- <textarea id="code">say("Hello, smcf.js!");</textarea> -->
 			</div>
-			<span>
-				<i class="fa-solid fa-arrow-down fa-3x arrow" onclick="smcfcper.main();" id="mobile"></i>
-				<i class="fa-solid fa-arrow-right fa-3x arrow" onclick="smcfcper.main();" id="desktop"></i>
+			<span tooltip="编译" onclick="smcfcper.main();">
+				<i class="fa-solid fa-arrow-down fa-3x arrow" id="mobile"></i>
+				<i class="fa-solid fa-arrow-right fa-3x arrow" id="desktop"></i>
 			</span>
 			<div class="resultBox">
 				<label for="result"><i class="fa-solid fa-code"></i> mcfunction</label>
 				<span>
 					<button class="iconBtn" onclick="smcfcper.copy();" tooltip="复制(Ctrl + C)"><i class="fa-solid fa-copy fa-2x"></i></button>
 					<button class="iconBtn" onclick="smcfcper.clear();" tooltip="清屏(Ctrl + Del)"><i class="fa-solid fa-eraser fa-2x"></i></button>
+					<button class="iconBtn" onclick="smcfcper.save();" tooltip="保存到本地(Ctrl + Alt + S)"><i class="fa-solid fa-floppy-disk fa-2x"></i></button>
 				</span>
 				<pre><code class="language-mcf" id="result"># 编译姬: ( •̀ ω •́ )✧ 欢迎~</code></pre>
 			</div>
 			<!-- <input type="submit" name="submit" onclick="smcfcper.main();"> -->
 			<!-- <button type="submit" onclick="smcfcper.main();">提交(<code>Ctrl</code> + <code>Enter</code>)</button> -->
+		</div>
+
+		<div class="box" id="aboutWindow" style="display: none;">
+			<label><img src="assets/images/smcfcper.icon.png" width="26px" height="26px" alt="smcfcper.icon.png"> 关于</label>
+			<button class="iconBtn" style="position: absolute; top: 0; right: 0;" tooltip="关闭" onclick="$('#aboutWindow').css('display', 'none');"><i class="fa-solid fa-xmark fa-2x"></i></button>
+			<p>
+				<h2>SMCFcper</h2>
+
+				版本: <version></version><br>
+
+				全称 <b><i>SMCF Compiler</i></b>,即 <b><i>smcf编译器</i></b><br>
+
+				一个简单的 smcf 编译器web实现.
+			</p>
+			<p>
+				<h2>感谢</h2>
+
+				smcfcper 的诞生离不开这些项目:
+				<ol>
+				0. 排名不分前后
+
+				<li> <a href="https://github.com/BuTian103/smcf.js">BuTian103/smcf.js</a></li>
+				<li> <a href="https://github.com/tonsky/FiraCode">tonsky/FiraCode</a></li>
+				<li> <a href="https://github.com/FortAwesome/Font-Awesome">FortAwesome/Font-Awesome</a></li>
+				<li> <a href="https://github.com/highlightjs/highlight.js">highlightjs/highlight.js</a></li>
+				<li> <a href="https://github.com/jquery/jquery">jquery/jquery</a></li>
+				<li> <a href="https://github.com/XeroAlpha/caidlist">XeroAlpha/caidlist</a></li>
+				</ol>
+			</p>
+			<button class="normal" onclick="$('#aboutWindow').css('display', 'none');">好</button>
 		</div>
 
 		<details class="sidebar">
@@ -83,7 +116,7 @@
 				</span></dt> -->
 				<dt><button class="iconBtn" tooltip="编译姬"><i class="fa-solid fa-code fa-2x"></i></button></dt>
 				<dt><button class="iconBtn" tooltip="设置"><i class="fa-solid fa-gear fa-2x"></i></button></dt>
-				<dt><button class="iconBtn" tooltip="关于" onclick=""><i class="fa-solid fa-face-smile fa-2x"></i></button></dt>
+				<dt><button class="iconBtn" tooltip="关于" onclick="$('#aboutWindow').css('display', 'block');"><i class="fa-solid fa-face-smile fa-2x"></i></button></dt>
 			</dl>
 		</details>
 
@@ -93,11 +126,46 @@
 
 		<footer>
 			<p>
-				SMCFcper <version></version><br>
+				SMCFcper <version>Loading...</version><br>
 				Copyright (c) 2024 FreeDayO Studios<br>
 				<icp></icp>
 			</p>
 		</footer>
 
+		<div style="display: none;">
+			<input type="file" id="fileInput">
+			<a href="" download="main.mcfunction" id="mcf"></a>
+		</div>
+
+		<script type="text/javascript">
+			document.getElementById("fileInput").addEventListener("change", function() {
+				let reader = new FileReader();
+				reader.readAsText(fileInput.files[0], "utf-8");
+				reader.onload = function(e) {
+				// urlData就是对应的文件内容
+					document.getElementById("code").innerText = this.result;
+				};
+				smcfcper.msg("打开完毕");
+			});
+			$("#aboutWindow").bind("mousedown", moveHandler);
+			function moveHandler(evt) {
+    			var $trgt = $(event.target);
+
+    			var $this = $(this);
+    			var el = $this[0];
+    			var oevent = evt || event;
+    			var distanceX = oevent.clientX - el.offsetLeft;
+    			var distanceY = oevent.clientY - el.offsetTop;
+    			$(document).bind("mousemove", function (evt) {
+    			    var oevent = evt || event;
+    			    el.style.left = oevent.clientX - distanceX + 'px';
+    			    el.style.top = oevent.clientY - distanceY + 'px';
+    			});
+   				$(document).bind("mouseup", function () {
+    			    $(document).unbind("mousemove");
+    			    $(document).unbind("mouseup");
+    			});
+			}
+		</script>
 	</body>
 </html>

@@ -8,11 +8,17 @@ let loadCperHotkey = function() {
 		/* if(event.key == "Escape") {
 			smcfcper.exit();
 		} */
-		if(event.ctrlKey && (event.key == "c"||event.key == "C")) {
+		if(event.ctrlKey && (event.key == "c" || event.key == "C")) {
 			smcfcper.copy();
 		}
 		if(event.ctrlKey && event.key == "Delete") {
 			smcfcper.clear();
+		}
+		if(event.ctrlKey && (event.key == "o" || event.key == "O")) {
+			$('#fileInput').click();
+		}
+		if(event.ctrlKey && event.altKey && (event.key == "s" || event.key == "S")) {
+			smcfcper.save();
 		}
 	});
 	console.info("[cperHotkey] 热键注册完毕,重新注册请执行 smcfcper.reloadHotkey(); ");
