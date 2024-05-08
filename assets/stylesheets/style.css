@@ -156,6 +156,7 @@ label {
 footer {
 	position: fixed;
 	bottom: 0;
+	z-index: -1;
 	left: calc(50vw);
 }
 
@@ -200,11 +201,10 @@ div#mainWindow {
 	margin-top: calc(20vh);
 }
 div#aboutWindow {
-	width: calc(32vw);
-	max-height: calc(65vh);
 	position: absolute;
 	top: calc(20vh);
 	left: calc(20vw);
+	height: calc(65vh);
 	z-index: 2;
 	border-radius: 10px;
 	border: 1px solid #eec;
@@ -317,6 +317,10 @@ button.normal:active {
 		/* margin-top: -10px; */
 	}
 	label {
+	}
+	div#aboutWindow {
+		width: calc(32vw);
+		max-height: calc(65vh);
 	}
 	[tooltip]:hover::before, [tooltip]:focus::before {
 		margin-top: 25px;

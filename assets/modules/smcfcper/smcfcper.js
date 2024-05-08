@@ -4,8 +4,8 @@ const result = document.querySelector("#result");
 const smcfcper = {
 	appName: "SMCFCompiler",
 	appNameShort: "smcfcper",
-	version: "v1.2.1",
-	buildVer: "(20240507)",
+	version: "v1.2.1-1",
+	buildVer: "(20240508)",
 	buildType: "Beta",
 	license: "",
 	author: "XiaozhiSans",
@@ -91,8 +91,6 @@ const addFunToCper = function(fN, f) {
 
 addFunToCper("reload", "loadSmcfcperModules");
 
-document.querySelector("dialog").removeAttribute("open");
-
 var logDebug = false;
 console.log = (function (oriLogFunc) {
 	return function () {
@@ -123,3 +121,5 @@ setInterval(function() {
 	document.querySelector("#codeHl").removeAttribute("data-highlighted");
 	hljs.highlightAll();
 }, 250);
+
+document.querySelector("dialog").removeAttribute("open");
