@@ -4,13 +4,14 @@ const result = document.querySelector("#result");
 const smcfcper = {
 	appName: "SMCFCompiler",
 	appNameShort: "smcfcper",
-	version: "v1.2.1-1",
-	buildVer: "(20240508)",
+	version: "v1.2.1-2",
+	buildVer: "(20240511)",
 	buildType: "Beta",
 	license: "",
 	author: "XiaozhiSans",
-	url: "",/* 
-	checkUpdate() {
+	url: "", /* 
+	// 等正式版发布就会投入使用
+	checkUpdate: function() {
 		let reslut = $.ajax({
 			url: "https://api.github.com/repos/XiaozhiSans/smcfcper/releases/latest",
 			dataType: "text/json",
@@ -30,8 +31,6 @@ const smcfcper = {
 	},
 	main: function() {
 		result.innerText = "# 由smcfcper编译";
-		// let commentSymbols = \//\;
-		// let code_ = code.innerText.replace(commentSymbols, )
 		eval(code.innerText);
 		result.removeAttribute("data-highlighted");
 		this.msg("编译完毕!");
@@ -101,6 +100,7 @@ console.log = (function (oriLogFunc) {
 })(console.log);
 
 console.info("[smcfcper] 核心模块加载完成, 版本: " + smcfcper.getVer());
+// smcfcper.checkUpdate();
 let versions = document.querySelectorAll("version");
 for(let version of versions) {
 	version.innerText = smcfcper.getVer();
@@ -112,7 +112,7 @@ setInterval(function() {
 }, 60000);
 
 setInterval(function() {
-	document.querySelector("#codeHl").innerHTML = code.innerText;
+	document.querySelector("#codeHl").innerHTML = code.innerHTML.replace(/<br>/g, ' ').replace(/<div>/g, '\n').replace(/<\/div>/g, ''); // 修复连续空行高度不一致
 	/* $(document).ready(function() {
 		$("#code").css({
 			'width': ($("#codeHl").width() + 'px')

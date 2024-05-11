@@ -53,7 +53,7 @@
 		<div class="box" id="mainWindow">
 			<div class="codeBox">
 				<span>
-					<label for="code"><i class="fa-solid fa-code"></i> smcf</label>
+					<label for="code"><i class="fa-solid fa-code"></i> main.smcf.js</label>
 					<button id="openSmcf" class="iconBtn" tooltip="打开源文件(Ctrl + O)" onclick="$('#fileInput').click();"><i class="fa-solid fa-folder-open fa-2x"></i></button>
 				</span>
 				<pre id="codeHlP"><code class="language-javascript" id="codeHl"></code></pre>
@@ -65,8 +65,8 @@
 				<i class="fa-solid fa-arrow-right fa-3x arrow" id="desktop"></i>
 			</span>
 			<div class="resultBox">
-				<label for="result"><i class="fa-solid fa-code"></i> mcfunction</label>
-				<span>
+				<label for="result"><i class="fa-solid fa-code"></i> main.mcfunction</label>
+				<span style="display: inline-block;">
 					<button class="iconBtn" onclick="smcfcper.copy();" tooltip="复制(Ctrl + C)"><i class="fa-solid fa-copy fa-2x"></i></button>
 					<button class="iconBtn" onclick="smcfcper.clear();" tooltip="清屏(Ctrl + Del)"><i class="fa-solid fa-eraser fa-2x"></i></button>
 					<button class="iconBtn" onclick="smcfcper.save();" tooltip="保存到本地(Ctrl + Alt + S)"><i class="fa-solid fa-floppy-disk fa-2x"></i></button>
@@ -75,6 +75,13 @@
 			</div>
 			<!-- <input type="submit" name="submit" onclick="smcfcper.main();"> -->
 			<!-- <button type="submit" onclick="smcfcper.main();">提交(<code>Ctrl</code> + <code>Enter</code>)</button> -->
+		</div>
+
+		<!-- 为循环优化算法做准备 -->
+		<div class="subWindow" style="display: none;">
+			<label for="auxiliary"><i class="fa-solid fa-code"></i> auxiliary.mcfunction</label>
+			<span></span>
+			<pre><code class="language-mcf" id="auxiliary"></code></pre>
 		</div>
 
 		<div class="box" id="aboutWindow" style="display: none;">

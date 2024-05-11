@@ -5,6 +5,7 @@
 body {
 	background: url('https://filecdn-images.xingyeai.com/image_inference_output/nebula/prod/img/2024-04-20/c06d7c14-8858-4755-a182-0758bf04faf2-1.jpeg') fixed no-repeat center;
 	background-size: auto 100%;
+	transition: all 2s;
 }
 
 @keyframes color {
@@ -58,9 +59,6 @@ body {
 		margin-left: 10px;
 }
 
-#script_loader {
-	display: none;
-}
 .hljs {
 	border-radius: 10px;
 }
@@ -164,6 +162,7 @@ code, #code {
 	font-family: "fira code";
 	font-size: 20px;
 	font-weight: normal;
+	transition: all 2s;
 }
 .codeBox {
 	display: grid;
