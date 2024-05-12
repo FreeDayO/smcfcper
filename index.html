@@ -54,7 +54,7 @@
 			<div class="codeBox">
 				<span>
 					<label for="code"><i class="fa-solid fa-code"></i> main.smcf.js</label>
-					<button id="openSmcf" class="iconBtn" tooltip="打开源文件(Ctrl + O)" onclick="$('#fileInput').click();"><i class="fa-solid fa-folder-open fa-2x"></i></button>
+					<!-- <button id="openSmcf" class="iconBtn" tooltip="打开源文件(Ctrl + O)" onclick="$('#fileInput').click();"><i class="fa-solid fa-folder-open fa-2x"></i></button> -->
 				</span>
 				<pre id="codeHlP"><code class="language-javascript" id="codeHl"></code></pre>
 				<div contenteditable="true" id="code">say("Hello, smcf.js!");</div>
@@ -114,9 +114,9 @@
 			<button class="normal" onclick="$('#aboutWindow').css('display', 'none');">好</button>
 		</div>
 
-		<details class="sidebar">
-			<summary>侧栏</summary>
-			<dl>
+		<sidebar>
+			<p style="animation: color 15s infinite;">侧栏</p>
+			<dl id="sidebar">
 				<!-- <dt><span>
 					<button class="iconBtn" tooltip="夜间" onclick="smcfcper.theme('dark');"><i class="fa-solid fa-cloud-moon fa-2x"></i></button>
 					<button class="iconBtn" tooltip="日间" onclick="smcfcper.theme('light');"><i class="fa-solid fa-sun fa-2x"></i></button>
@@ -125,7 +125,7 @@
 				<dt><button class="iconBtn" tooltip="设置"><i class="fa-solid fa-gear fa-2x"></i></button></dt>
 				<dt><button class="iconBtn" tooltip="关于" onclick="$('#aboutWindow').css('display', 'block');"><i class="fa-solid fa-face-smile fa-2x"></i></button></dt>
 			</dl>
-		</details>
+		</sidebar>
 
 		<div id="messageBox">
 			<i class="fa-solid fa-message fa-shake" id="message"></i>
@@ -149,8 +149,7 @@
 				let reader = new FileReader();
 				reader.readAsText(fileInput.files[0], "utf-8");
 				reader.onload = function(e) {
-				// urlData就是对应的文件内容
-					document.getElementById("code").innerText = this.result;
+					code.innerText = this.result;
 				};
 				smcfcper.msg("打开完毕");
 			});
@@ -174,5 +173,6 @@
     			});
 			}
 		</script>
+		<script type="text/javascript" src="https://interactive-examples.mdn.mozilla.net/js/editor-js.js"></script>
 	</body>
 </html>

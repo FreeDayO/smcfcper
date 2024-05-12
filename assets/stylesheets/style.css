@@ -86,22 +86,26 @@ body {
 	animation: color 5s infinite; */
 	/* box-shadow: 0 1px black; */
 }
-.sidebar {
+sidebar {
 	padding: 10px;
 	position: fixed;
 	top: calc(45vh);
 	right: calc(-10vw);
 	background-color: #3456;
 	border-radius: 10px;
-	transition: right 2s;
+	transition: all 2s;
 	font-size: 20px;
-	animation: color 15s infinite;
-}
-.sidebar:hover, .sidebar[open] {
-	right: 0;
-}
-.sidebar>summary {
 	user-select: none;
+	max-height: 64px;
+}
+sidebar:hover, sidebar:hover>dl#sidebar>dt>button>i {
+	right: 0;
+	opacity: 1;
+	max-height: 1000px;
+	transition: all 2s;
+}
+dl#sidebar>dt>button>i {
+	opacity: 0;
 }
 .box {
 	padding: 10px;
@@ -180,6 +184,7 @@ div#code {
 	z-index: 1;
 	margin-top: 12px;
 	animation: textCurColor 15s infinite;
+	outline: none;
 }
 div#messageBox {
 	/* padding: 16px; */
@@ -247,6 +252,7 @@ button.normal {
 	background-color: deeppink;
 	transition: background-color 2s, color 2s;
 	color: white;
+	cursor: pointer;
 }
 button.normal:hover, button.normal:focus {
 	background-color: hotpink;
@@ -292,7 +298,7 @@ button.normal:active {
 		background-color: black;
 		margin-top: calc(-20vh);
 	}
-	.sidebar {
+	sidebar {
 		right: calc(-2vw);
 	}
 	.fa, .fa-solid {
@@ -316,6 +322,7 @@ button.normal:active {
 		/* margin-top: -10px; */
 	}
 	label {
+		animation: color 15s infinite;
 	}
 	div#aboutWindow {
 		width: calc(32vw);
@@ -341,6 +348,7 @@ button.normal:active {
 		background-color: rgba(24, 26, 27, 0.67);
 	}
 	footer {
+		animation: color 15s infinite;
 	}
 }
 

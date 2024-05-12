@@ -4,8 +4,8 @@ const result = document.querySelector("#result");
 const smcfcper = {
 	appName: "SMCFCompiler",
 	appNameShort: "smcfcper",
-	version: "v1.2.1-2",
-	buildVer: "(20240511)",
+	version: "v1.2.1-3",
+	buildVer: "(20240512)",
 	buildType: "Beta",
 	license: "",
 	author: "XiaozhiSans",
@@ -113,11 +113,6 @@ setInterval(function() {
 
 setInterval(function() {
 	document.querySelector("#codeHl").innerHTML = code.innerHTML.replace(/<br>/g, ' ').replace(/<div>/g, '\n').replace(/<\/div>/g, ''); // 修复连续空行高度不一致
-	/* $(document).ready(function() {
-		$("#code").css({
-			'width': ($("#codeHl").width() + 'px')
-		});
-	}); */
 	document.querySelector("#codeHl").removeAttribute("data-highlighted");
 	hljs.highlightAll();
 }, 250);

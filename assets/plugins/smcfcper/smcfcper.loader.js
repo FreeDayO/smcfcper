@@ -35,7 +35,7 @@ let loadSmcfcperModules = function() {
 							eval(modu[3])? 
 								console.info("[smcfcperLoader] " + modu[2] + "模块<" + modu[1] + ">(" + modu[0] + ") 加载完毕"):
 								console.warn("[smcfcperLoader] " + modu[2] + "模块<" + modu[1] + ">(" + modu[0] + ") 加载失败");
-						}, 5000);
+						}, 10000);
 					}
 	
 				}
