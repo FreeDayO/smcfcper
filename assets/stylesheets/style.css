@@ -286,6 +286,31 @@ button.normal:active {
 	display: none;
 }
 
+div.subWindow {
+	padding: 10px;
+	margin-top: 10px;
+	background-color: #234a;
+	border-radius: 10px;
+}
+div.subWindow>label {
+	opacity: 1;
+}
+div.subWindow>label::before {
+	content: "收起 ";
+}
+div.subWindow:hover>label::before {
+	content: "展开 ";
+}
+div.subWindow>* {
+	opacity: 0;
+	max-height: 0;
+	transition: all 2s;
+}
+div.subWindow:hover>* {
+	opacity: 1;
+	max-height: 1000px;
+}
+
 @media screen and (min-width: 1000px) {
 	/* 适配pc显示 */
 	body {

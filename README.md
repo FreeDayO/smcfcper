@@ -50,6 +50,7 @@ smcfcper 的诞生离不开这些项目:
 4. [highlightjs/highlight.js](https://github.com/highlightjs/highlight.js)
 5. [jquery/jquery](https://github.com/jquery/jquery)
 6. [XeroAlpha/caidlist](https://github.com/XeroAlpha/caidlist)
+7. [Stuk/jszip](https://github.com/Stuk/jszip)
 
 ---
 

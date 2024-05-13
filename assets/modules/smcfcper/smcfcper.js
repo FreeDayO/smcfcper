@@ -1,87 +1,120 @@
 const code = document.querySelector("#code");
-const result = document.querySelector("#result");
+const result = document.querySelector("#result"), auxiliary = document.querySelector("#auxiliary");
 
 const smcfcper = {
 	appName: "SMCFCompiler",
 	appNameShort: "smcfcper",
-	version: "v1.2.1-3",
-	buildVer: "(20240512)",
+	version: "v1.3.0",
+	buildVer: "(20240513)",
 	buildType: "Beta",
 	license: "",
 	author: "XiaozhiSans",
-	url: "", /* 
-	// 等正式版发布就会投入使用
-	checkUpdate: function() {
-		let reslut = $.ajax({
-			url: "https://api.github.com/repos/XiaozhiSans/smcfcper/releases/latest",
-			dataType: "text/json",
+	url: "",
+	checkUpdate: () => {
+		$.ajax({
+			url: "https://api.github.com/repos/XiaozhiSans/smcfcper/releases",
+			dataType: "text",
 			success: function(data) {
 				let obj = JSON.parse(data);
-				let latestTag = parseFloat(obj.get("tag_name").replace('v', ''));
-				let tag = parseFloat(smcfcper.version.replace('v', ''));
-				tag < latestTag? return latestTag:
-					tag > latestTag? return 2:
-						return 0;
+				let latestTag = obj[0].tag_name;
+				latestTag.startsWith('v')? latestTag: latestTag = 'v' + latestTag;
+				let tag = smcfcper.version + '-' + smcfcper.buildType.toLocaleLowerCase();
+				tag > latestTag? console.info("[smcfcper] 内测版还检查什么更新 (￣﹃￣) \n\t当前版本: " + tag + "\n\t最新发行版: " + latestTag):
+				tag < latestTag? console.info("[smcfcper] smcfcper有新版可用! \n\t当前版本: " + tag + "\n\t最新版本: " + latestTag):
+				tag == latestTag? console.info("[smcfcper] 恭喜,smcfcper是最新版 \n\t当前版本: " + tag + "\n\t最新版本: " + latestTag): latestTag;
+			},
+			error: function(data) {
+				console.error("[smcfcper] smcfcper检查更新失败,错误信息: " + data);
 			}
 		});
-		result == 1? console.info("[smcfcper] smcfcper有新版可用! 新版: " + )
-	}, */
-	getVer: function() {
-		return this.buildType + ' ' + this.version + this.buildVer;
 	},
-	main: function() {
+	getVer: () => {
+		return smcfcper.buildType + ' ' + smcfcper.version + smcfcper.buildVer;
+	},
+	main: () => {
 		result.innerText = "# 由smcfcper编译";
 		eval(code.innerText);
-		result.removeAttribute("data-highlighted");
-		this.msg("编译完毕!");
+		hljs.reHighlightAll(result);
+		smcfcper.msg("编译完毕!");
 	},
-	copy: function() {
+	copy: () => {
 		navigator.clipboard? 
 			navigator.clipboard.writeText(result.innerText)&&
-			this.msg("已复制!"):
-			this.msg("复制失败! 您的浏览器不支持复制!");
+			smcfcper.msg("已复制!"):
+			smcfcper.msg("复制失败! 您的浏览器不支持复制!");
 	},
-	clear: function() {
-		let wordCount = result.innerText.split('').length;
+	clear: () => {
+		let wordCount = result.innerText.split('').length + auxiliary.innerText.split('').length;
 		let text = "# 编译姬: ♪(´▽`) 已经清理完毕!";
 		let showWordCount = false;
 		showWordCount? text += " 清理了 " + wordCount + " 个字符.": text += '';
 		result.innerText = text;
-		result.removeAttribute("data-highlighted");
-		this.msg("已清屏!");
+		auxiliary.innerText = '';
+		$("#auxiliary").css("display", "none");
+		hljs.reHighlightAll(result);
+		smcfcper.msg("已清屏!");
 	},
-	msg: function(content) {
+	msg: content => {
 		document.querySelector("i#message").innerText = ' ' + content;
 		document.querySelector("div#messageBox").setAttribute("new", '');
-		setTimeout(function() {
+		setTimeout(() => {
 			document.querySelector("div#messageBox").removeAttribute("new");
 		}, 1000);
-		setTimeout(function() {
+		setTimeout(() => {
 			document.querySelector("i#message").innerText = '';
 		}, 2000);
 	}/* ,
-	theme: function(name) {
+	theme: name => {
 		let html = document.querySelector("html");
 		name == "dark"? 
 			html.removeAttribute("light"):
 			html.setAttribute("light", '');
-		this.msg("切换完毕");
+		smcfcper.msg("切换完毕");
 	} */,
-	save: function() {
+	save: () => {
+		/*
 		let blob = new Blob([result.innerText], {
 			type: "text/plain;charset=utf-8"
 		});
 		let downloadUrl = URL.createObjectURL(blob);
 		document.querySelector("a#mcf").href = downloadUrl;
-		setTimeout(function() {
+		setTimeout(() => {
 			URL.revokeObjectURL(downloadUrl);
 		}, 5000); // 5s后释放内存中存在的url
 		document.querySelector("a#mcf").click();
-		this.msg("已发送下载请求");
+		smcfcper.msg("已发送下载请求");
+		*/
+		async function fetchBlob(fetchUrl, method = "POST", body = null) {
+			const response = await window.fetch(fetchUrl, {
+					method,
+					body: body ? JSON.stringify(body) : null,
+					headers: {
+						"Accept": "application/json",
+						"Content-Type": "application/json",
+						"X-Requested-With": "XMLHttpRequest",
+					},
+			});
+			const blob = await response.blob();
+			return blob;
+		}
+		let zip = new JSZip();
+		let smcf = zip.folder("smcf"), functions = zip.folder("functions");
+		(auxiliary.innerText && auxiliary.innerText !== '')? functions.file("auxiliary.mcfunction", auxiliary.innerText): undefined;
+		functions.file("main.mcfunction", result.innerText);
+		smcf.file("main.smcf.js", code.innerText);
+		zip.generateAsync({type: "blob"}).then(blob => {
+			let url = window.URL.createObjectURL(blob);
+			document.querySelector("a#mcf").href = url;
+			setTimeout(() => {
+				URL.revokeObjectURL(url);
+			}, 5000); // 5s后释放内存中存在的url
+			smcfcper.msg("已发送下载请求");
+			document.querySelector("a#mcf").click();
+		});
 	}
 }
 
-const addFunToCper = function(fN, f) {
+const addFunToCper = (fN, f) => {
 	let add = `smcfcper.${fN} = ${f}`;
 	eval(add);
 	let del = `${f} = undefined`;
@@ -90,31 +123,41 @@ const addFunToCper = function(fN, f) {
 
 addFunToCper("reload", "loadSmcfcperModules");
 
+hljs.reHighlightAll = (e) => {
+	e.removeAttribute("data-highlighted");
+	hljs.highlightAll();
+}
+
 var logDebug = false;
-console.log = (function (oriLogFunc) {
-	return function () {
-		if(logDebug) {
-			oriLogFunc.apply(this, arguments);
-		}
+console.log = (oriLogFunc => {
+	return () => {
+		logDebug? oriLogFunc.apply(smcfcper, arguments): undefined;
 	}
 })(console.log);
 
 console.info("[smcfcper] 核心模块加载完成, 版本: " + smcfcper.getVer());
-// smcfcper.checkUpdate();
+smcfcper.checkUpdate();
 let versions = document.querySelectorAll("version");
 for(let version of versions) {
 	version.innerText = smcfcper.getVer();
 }
 
-setInterval(function() {
-	// 心跳数据
+setInterval(() => {
+	// 心跳保活
 	console.info("[smcfcper] smcfcper running...");
 }, 60000);
 
-setInterval(function() {
+/* setInterval(() => {
 	document.querySelector("#codeHl").innerHTML = code.innerHTML.replace(/<br>/g, ' ').replace(/<div>/g, '\n').replace(/<\/div>/g, ''); // 修复连续空行高度不一致
 	document.querySelector("#codeHl").removeAttribute("data-highlighted");
 	hljs.highlightAll();
-}, 250);
+}, 250); */
+let onChange = () => {
+	document.querySelector("#codeHl").innerHTML = code.innerHTML.replace(/<br>/g, ' ').replace(/<div>/g, '\n').replace(/<\/div>/g, ''); // 修复连续空行高度不一致
+	hljs.reHighlightAll(document.querySelector("#codeHl"));
+	hljs.highlightAll();
+}
+code.addEventListener("keyup", onChange);
+onChange();
 
 document.querySelector("dialog").removeAttribute("open");

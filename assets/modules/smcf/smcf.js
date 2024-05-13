@@ -5,7 +5,7 @@ const _A = "@a", _P = "@p", _R = "@r", _S = "@s", _E = "@e", _C = "@c", _V = "@v
 
 const EOL = "<br>";
 var __SUFFIX__ = ".mcfunction";
-var __PATH__ = "mainsmcf" + __SUFFIX__;
+var __PATH__ = "main" + __SUFFIX__;
 
 const block = {
     about : "~",
@@ -30,7 +30,7 @@ const block = {
     copy : function(xyz,toxyz,withxyz,other){
         put("#将" + xyz + "的方块复制到" + toxyz)
         let tother = other || ""
-        put("clone " + xyz + " " + toxyz + " " + whithxyz + " " + other)
+        put("clone " + xyz + " " + toxyz + " " + withxyz + " " + other)
     },
     linear : function(fromx,fromy,fromz,tox,toy,toz,block,maxlen){
         put("#画线")
@@ -67,7 +67,7 @@ const block = {
 }
 const smcf = {
     version: "v1.0.0",
-    authors: ["Love-Kogasa", "XiaozhiSans", "麦思"]
+    authors: ["Love-Kogasa", "XiaozhiSans", "Mys"]
 }
 
 function Rn/*relative number*/(number){
@@ -149,9 +149,9 @@ function table(str){
 
 function tp(f,t){
     // better tp
-    if(typeof(t) == "undefined" || t == '') {
+    if(!t || t == '') {
         put("# 传送到" + f);
-        put("tp" + ' ' + f)
+        put("tp " + f)
         return f;
     }
     put("#将" + f + "传送到" + t );
@@ -183,6 +183,7 @@ function put(str){
     // 适配编译器
     // document.write(str + EOL);
     result.innerHTML += ('\n' + str);
+    return str;
 }
 
 /* function header(src){
