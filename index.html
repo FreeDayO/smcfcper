@@ -29,7 +29,7 @@
 		<!--<script type="text/javascript" src="assets/plugins/hljs.linenum/js/linenum.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/plugins/hljs.linenum/css/linenum.css">-->
 		<script>
-			// hljs.initLineNumbersOnLoad();
+			// 初始化 sw.js
 			if(navigator.serviceWorker) {
 				navigator.serviceWorker.register('sw.js')
 				.then(function(registration) {
@@ -57,7 +57,7 @@
 					<!-- <button id="openSmcf" class="iconBtn" tooltip="打开源文件(Ctrl + O)" onclick="$('#fileInput').click();"><i class="fa-solid fa-folder-open fa-2x"></i></button> -->
 				</span>
 				<pre id="codeHlP"><code class="language-javascript" id="codeHl"></code></pre>
-				<div contenteditable="true" id="code">say("Hello, smcf.js!");</div>
+				<div contenteditable="true" id="code" tip="// code here...">smcf.say("Hello, smcf.js!");</div>
 				<!-- <textarea id="code">say("Hello, smcf.js!");</textarea> -->
 			</div>
 			<span tooltip="编译" onclick="smcfcper.main();">
@@ -156,24 +156,24 @@
 			});
 			$("#aboutWindow").bind("mousedown", moveHandler);
 			function moveHandler(evt) {
-    			var $trgt = $(event.target);
+				var $trgt = $(event.target);
 
-    			var $this = $(this);
-    			var el = $this[0];
-    			var oevent = evt || event;
-    			var distanceX = oevent.clientX - el.offsetLeft;
-    			var distanceY = oevent.clientY - el.offsetTop;
-    			$(document).bind("mousemove", function (evt) {
-    			    var oevent = evt || event;
-    			    el.style.left = oevent.clientX - distanceX + 'px';
-    			    el.style.top = oevent.clientY - distanceY + 'px';
-    			});
-   				$(document).bind("mouseup", function () {
-    			    $(document).unbind("mousemove");
-    			    $(document).unbind("mouseup");
-    			});
+				var $this = $(this);
+				var el = $this[0];
+				var oevent = evt || event;
+				var distanceX = oevent.clientX - el.offsetLeft;
+				var distanceY = oevent.clientY - el.offsetTop;
+				$(document).bind("mousemove", function (evt) {
+					var oevent = evt || event;
+					el.style.left = oevent.clientX - distanceX + 'px';
+					el.style.top = oevent.clientY - distanceY + 'px';
+				});
+				$(document).bind("mouseup", function () {
+					$(document).unbind("mousemove");
+					$(document).unbind("mouseup");
+				});
 			}
 		</script>
-		<script type="text/javascript" src="https://interactive-examples.mdn.mozilla.net/js/editor-js.js"></script>
+		<!-- <script type="text/javascript" src="https://interactive-examples.mdn.mozilla.net/js/editor-js.js"></script> -->
 	</body>
 </html>

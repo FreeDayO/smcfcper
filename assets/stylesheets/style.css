@@ -186,6 +186,11 @@ div#code {
 	animation: textCurColor 15s infinite;
 	outline: none;
 }
+div#code:empty:before {
+	content: attr(tip);
+	position: absolute;
+	color: grey;
+}
 div#messageBox {
 	/* padding: 16px; */
 	font-size: 24px;

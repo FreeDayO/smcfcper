@@ -4,8 +4,8 @@ const result = document.querySelector("#result"), auxiliary = document.querySele
 const smcfcper = {
 	appName: "SMCFCompiler",
 	appNameShort: "smcfcper",
-	version: "v1.3.0",
-	buildVer: "(20240513)",
+	version: "v1.3.0-1",
+	buildVer: "(20240518)",
 	buildType: "Beta",
 	license: "",
 	author: "XiaozhiSans",
@@ -17,11 +17,14 @@ const smcfcper = {
 			success: function(data) {
 				let obj = JSON.parse(data);
 				let latestTag = obj[0].tag_name;
-				latestTag.startsWith('v')? latestTag: latestTag = 'v' + latestTag;
-				let tag = smcfcper.version + '-' + smcfcper.buildType.toLocaleLowerCase();
-				tag > latestTag? console.info("[smcfcper] 内测版还检查什么更新 (￣﹃￣) \n\t当前版本: " + tag + "\n\t最新发行版: " + latestTag):
-				tag < latestTag? console.info("[smcfcper] smcfcper有新版可用! \n\t当前版本: " + tag + "\n\t最新版本: " + latestTag):
-				tag == latestTag? console.info("[smcfcper] 恭喜,smcfcper是最新版 \n\t当前版本: " + tag + "\n\t最新版本: " + latestTag): latestTag;
+				let latestVer = latestTag;
+				let version = smcfcper.version + '-' + smcfcper.buildType.toLowerCase();
+				latestTag.startsWith('v')? latestTag = latestTag.replace('v', ''): undefined;
+				latestTag = latestTag.replace(/\-[a-z]+/g, '');
+				let tag = smcfcper.version.replace('v', '').replace('-', '.');
+				tag > latestTag? console.info("[smcfcper] 内测版还检查什么更新 (￣﹃￣) \n\t当前版本: " + version + "\n\t最新发行版: " + latestVer):
+				tag < latestTag? console.info("[smcfcper] smcfcper有新版可用! \n\t当前版本: " + version + "\n\t最新版本: " + latestVer):
+				tag == latestTag? console.info("[smcfcper] 恭喜,smcfcper是最新版 \n\t当前版本: " + version + "\n\t最新版本: " + latestVer): undefined;
 			},
 			error: function(data) {
 				console.error("[smcfcper] smcfcper检查更新失败,错误信息: " + data);
@@ -47,7 +50,7 @@ const smcfcper = {
 		let wordCount = result.innerText.split('').length + auxiliary.innerText.split('').length;
 		let text = "# 编译姬: ♪(´▽`) 已经清理完毕!";
 		let showWordCount = false;
-		showWordCount? text += " 清理了 " + wordCount + " 个字符.": text += '';
+		showWordCount? text += " 清理了 " + wordCount + " 个字符.": undefined;
 		result.innerText = text;
 		auxiliary.innerText = '';
 		$("#auxiliary").css("display", "none");
@@ -152,8 +155,8 @@ setInterval(() => {
 	document.querySelector("#codeHl").removeAttribute("data-highlighted");
 	hljs.highlightAll();
 }, 250); */
-let onChange = () => {
-	document.querySelector("#codeHl").innerHTML = code.innerHTML.replace(/<br>/g, ' ').replace(/<div>/g, '\n').replace(/<\/div>/g, ''); // 修复连续空行高度不一致
+const onChange = () => {
+	(code.innerHTML == '')? document.querySelector("#codeHl").innerHTML = ' ': document.querySelector("#codeHl").innerHTML = code.innerHTML.replace(/<br>/g, ' ').replace(/<div>/g, '\n').replace(/<\/div>/g, ''); // 修复连续空行高度不一致
 	hljs.reHighlightAll(document.querySelector("#codeHl"));
 	hljs.highlightAll();
 }
