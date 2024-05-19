@@ -19,7 +19,7 @@
 
 		<link rel="stylesheet" type="text/css" href="assets/stylesheets/style.css">
 		<script type="text/javascript" src="assets/plugins/jquery@3.5.1/jquery.min.js"></script>
-		<script type="text/javascript" src="assets/plugins/smcfcper/smcfcper.loader.js"></script>
+		<script type="text/javascript" src="assets/plugins/smcfcper/cper.loader.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/plugins/fira_code/fira_code.css">
 		<link rel="stylesheet" type="text/css" href="assets/plugins/fontawesome-free-6.5.2-web/css/all.min.css">
 		<link rel="stylesheet" type="text/css" href="assets/plugins/highlight.js/styles/github-dark.min.css">
@@ -79,9 +79,8 @@
 
 		<!-- 为循环优化算法做准备 -->
 		<div class="subWindow" style="display: none;">
-			<label for="auxiliary"><i class="fa-solid fa-code"></i> auxiliary.mcfunction</label>
-			<span><!-- 为按钮预留 --></span>
 			<pre><code class="language-mcf" id="auxiliary"></code></pre>
+			<pre><code class="language-mcf" id="loops"></code></pre>
 		</div>
 
 		<div class="box" id="aboutWindow" style="display: none;">
@@ -116,7 +115,7 @@
 		</div>
 
 		<sidebar>
-			<p style="animation: color 15s infinite;">侧栏</p>
+			<p>侧栏</p>
 			<dl id="sidebar">
 				<!-- <dt><span>
 					<button class="iconBtn" tooltip="夜间" onclick="smcfcper.theme('dark');"><i class="fa-solid fa-cloud-moon fa-2x"></i></button>

@@ -66,7 +66,8 @@
     "header",
     "setblock",
     "number",
-    "scb"
+    "scb",
+    "tagMgr"
   ];
   const LITERALS = [
     "true",
@@ -162,7 +163,8 @@
     "escape",
     "unescape",
 
-    "itemsList"
+    "items",
+    "blocks"
   ];
 
   const BUILT_IN_VARIABLES = [
@@ -175,7 +177,9 @@
     "localStorage",
     "sessionStorage",
     "module",
-    "global" // Node.js
+    "global", // Node.js
+    "smcfcper",
+    "smcf" // smcf.js
   ];
 
   const BUILT_INS = [].concat(

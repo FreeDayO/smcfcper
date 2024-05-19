@@ -104,6 +104,9 @@ sidebar:hover, sidebar:hover>dl#sidebar>dt>button>i {
 	max-height: 1000px;
 	transition: all 2s;
 }
+sidebar>p {
+	animation: color 15s infinite;
+}
 dl#sidebar>dt>button>i {
 	opacity: 0;
 }
@@ -222,13 +225,13 @@ div#aboutWindow {
 }
 /* div#aboutWindow>label {
 	position: relative;
-    height: 28px;
-    z-index: 3;
-    background: #f3f3f3;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    border-bottom: 1px solid #eec;
-    cursor: move;
+	height: 28px;
+	z-index: 3;
+	background: #f3f3f3;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	border-bottom: 1px solid #eec;
+	cursor: move;
 } */
 button.iconBtn {
 	border: none;

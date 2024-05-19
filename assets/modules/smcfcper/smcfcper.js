@@ -4,19 +4,17 @@ const result = document.querySelector("#result"), auxiliary = document.querySele
 const smcfcper = {
 	appName: "SMCFCompiler",
 	appNameShort: "smcfcper",
-	version: "v1.3.0-1",
-	buildVer: "(20240518)",
+	version: "v1.3.1",
+	buildVer: "(20240519)",
 	buildType: "Beta",
 	license: "",
 	author: "XiaozhiSans",
 	url: "",
 	checkUpdate: () => {
-		$.ajax({
-			url: "https://api.github.com/repos/XiaozhiSans/smcfcper/releases",
-			dataType: "text",
-			success: function(data) {
-				let obj = JSON.parse(data);
-				let latestTag = obj[0].tag_name;
+		$.get(
+			"https://api.github.com/repos/XiaozhiSans/smcfcper/releases",
+			data => {
+				let latestTag = data[0].tag_name;
 				let latestVer = latestTag;
 				let version = smcfcper.version + '-' + smcfcper.buildType.toLowerCase();
 				latestTag.startsWith('v')? latestTag = latestTag.replace('v', ''): undefined;
@@ -25,11 +23,8 @@ const smcfcper = {
 				tag > latestTag? console.info("[smcfcper] 内测版还检查什么更新 (￣﹃￣) \n\t当前版本: " + version + "\n\t最新发行版: " + latestVer):
 				tag < latestTag? console.info("[smcfcper] smcfcper有新版可用! \n\t当前版本: " + version + "\n\t最新版本: " + latestVer):
 				tag == latestTag? console.info("[smcfcper] 恭喜,smcfcper是最新版 \n\t当前版本: " + version + "\n\t最新版本: " + latestVer): undefined;
-			},
-			error: function(data) {
-				console.error("[smcfcper] smcfcper检查更新失败,错误信息: " + data);
 			}
-		});
+		);
 	},
 	getVer: () => {
 		return smcfcper.buildType + ' ' + smcfcper.version + smcfcper.buildVer;
@@ -41,9 +36,8 @@ const smcfcper = {
 		smcfcper.msg("编译完毕!");
 	},
 	copy: () => {
-		navigator.clipboard? 
-			navigator.clipboard.writeText(result.innerText)&&
-			smcfcper.msg("已复制!"):
+		navigator.clipboard?
+			(() => {navigator.clipboard.writeText(result.innerText); smcfcper.msg("已复制!");})():
 			smcfcper.msg("复制失败! 您的浏览器不支持复制!");
 	},
 	clear: () => {
@@ -90,7 +84,7 @@ const smcfcper = {
 		async function fetchBlob(fetchUrl, method = "POST", body = null) {
 			const response = await window.fetch(fetchUrl, {
 					method,
-					body: body ? JSON.stringify(body) : null,
+					body: body? JSON.stringify(body): null,
 					headers: {
 						"Accept": "application/json",
 						"Content-Type": "application/json",
@@ -102,7 +96,11 @@ const smcfcper = {
 		}
 		let zip = new JSZip();
 		let smcf = zip.folder("smcf"), functions = zip.folder("functions");
-		(auxiliary.innerText && auxiliary.innerText !== '')? functions.file("auxiliary.mcfunction", auxiliary.innerText): undefined;
+		(auxiliary.innerText && auxiliary.innerText !== '')? (() => {
+			functions.file("auxiliary.mcfunction", auxiliary.innerText);
+			functions.file("loops.mcfunction", document.querySelector("code#loops").innerText);
+			// smcf.file("loops.smcf.js", "../");
+		})(): undefined;
 		functions.file("main.mcfunction", result.innerText);
 		smcf.file("main.smcf.js", code.innerText);
 		zip.generateAsync({type: "blob"}).then(blob => {

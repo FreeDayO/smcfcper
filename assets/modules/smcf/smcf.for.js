@@ -1,4 +1,4 @@
-smcf.for = function(times, cmd, step) {
+smcf.for = (cmd, times, step) => {
 	if(!times || times === '' || times === 0) {
 		put("# smcf.for()错误: 次数不能为0");
 		return;
@@ -7,9 +7,7 @@ smcf.for = function(times, cmd, step) {
 		put("# smcf.for()错误: 命令不能为空");
 		return;
 	}
-	if(!step || step == '') {
-		step = 1; // 步长默认为 1
-	}
+	(!step || step == '')? step = 1: undefined; // 步长默认为 1
 	if(typeof(step) !== "number" || step <= 0) {
 		put("# smcf.for()错误: 步长不能为非数字或<=0");
 		return;
@@ -17,12 +15,17 @@ smcf.for = function(times, cmd, step) {
 	let putAux = str => {
 		auxiliary.innerHTML = '';
 		auxiliary.innerHTML += (str + '\n');
-		auxiliary.removeAttribute("data-highlighted");
+		// auxiliary.removeAttribute("data-highlighted");
+	}, putLoops = str => {
+		document.querySelector("code#loops").innerHTML = '';
+		document.querySelector("code#loops").innerHTML += (str + '\n');
+
 	}
 	if(typeof(cmd) !== "string") {
 		eval(cmd);
 	}
-	let auxCode = `# auxiliary.mcfunction
+	let auxCode =
+`# auxiliary.mcfunction
 # Create by Mys
 # Compiled by XiaoZhiSans /* 屑XS: 我不好说( */
 #------------------
@@ -84,13 +87,13 @@ tag @e [tag=system,tag=sco.inited,tag=!sco.hasVaule] add sco.hasVaule
 # 加上 execute if entity @e [tag=system,tag=sco.inited,tag=sco.hasVaule,scores={a=$0}] run 作为前缀
 
 # 这里是要执行的语句 (循环体)
-${cmd}
+function loops
 
 # 使用记分板 a 作为循环次数的记录
 scoreboard players add @e [tag=system,tag=sco.inited,tag=sco.hasVaule] a ${step}
 
 execute if entity @e [tag=system,scores={a=0..${times}}] run function auxiliary`
 	putAux(auxCode);
-	$(".subWindow").css("display", "block");
-	mcf("auxiliary");
+	putLoops(cmd);
+	smcf.mcf("auxiliary");
 }
