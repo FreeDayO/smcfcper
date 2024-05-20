@@ -1,8 +1,8 @@
 'use strict';
  
 const cacheName = "smcfcper-cache"; // 缓存名
-const startPage = "/smcfcper/"; // 首页地址
-const offlinePage = "/smcfcper/"; // 离线首页地址
+const startPage = "/"; // 首页地址
+const offlinePage = "/"; // 离线首页地址
 const filesToCache = [startPage, offlinePage];
 
 // 不缓存的项目

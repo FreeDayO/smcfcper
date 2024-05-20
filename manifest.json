@@ -2,16 +2,14 @@
 	"name": "SMCFCompiler",
 	"description": "简单的smcf编译器web实现",
 	"short_name": "smcfcper",
-	"start_url": "/smcfcper/",
-	"scope": "/smcfcper/",
+	"start_url": "/",
+	"scope": "/",
 	"lang": "zh",
 	"theme_color": "#003841",
 	"display": "standalone",
-	"icons": [
-		{
-			"src": "assets/images/smcfcper.icon.png",
-			"sizes": "192x192",
-			"type": "image/png"
-		}
-	]
+	"icons": [{
+		"src": "assets/images/smcfcper.icon.png",
+		"sizes": "192x192",
+		"type": "image/png"
+	}]
 }
