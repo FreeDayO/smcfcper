@@ -1,8 +1,9 @@
 //smcf.js By freeDayO 李君子
 //itemsList -- Xi⃰aozhi⃰Sans
 
+let _A = "@a", _P = "@p", _R = "@r", _S = "@s", _E = "@e", _C = "@c", _V = "@v", _I = "@initiator";
+
 const smcf = new class {
-    _A = "@a"; _P = "@p"; _R = "@r"; _S = "@s"; _E = "@e"; _C = "@c"; _V = "@v"; _I = "@initiator";
     EOL = "<br>";
     __SUFFIX__ = ".mcfunction";
     __PATH__ = "main" + this.__SUFFIX__;

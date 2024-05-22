@@ -4,15 +4,14 @@ const result = document.querySelector("#result"), auxiliary = document.querySele
 const smcfcper = {
 	appName: "SMCFCompiler",
 	appNameShort: "smcfcper",
-	version: "v1.3.1",
-	buildVer: "(20240519)",
+	version: "v1.3.1-1",
+	buildVer: "(20240522)",
 	buildType: "Beta",
 	license: "",
 	author: "XiaozhiSans",
 	url: "",
 	checkUpdate: () => {
-		$.get(
-			"https://api.github.com/repos/XiaozhiSans/smcfcper/releases",
+		$.get("https://api.github.com/repos/FreeDayO/smcfcper/releases",
 			data => {
 				let latestTag = data[0].tag_name;
 				let latestVer = latestTag;
@@ -27,7 +26,7 @@ const smcfcper = {
 		);
 	},
 	getVer: () => {
-		return smcfcper.buildType + ' ' + smcfcper.version + smcfcper.buildVer;
+		return `${smcfcper.buildType} ${smcfcper.version}${smcfcper.buildVer}`;
 	},
 	main: () => {
 		result.innerText = "# 由smcfcper编译";
@@ -129,12 +128,12 @@ hljs.reHighlightAll = (e) => {
 	hljs.highlightAll();
 }
 
-var logDebug = false;
+/* var logDebug = false;
 console.log = (oriLogFunc => {
 	return () => {
 		logDebug? oriLogFunc.apply(smcfcper, arguments): undefined;
 	}
-})(console.log);
+})(console.log); */
 
 console.info("[smcfcper] 核心模块加载完成, 版本: " + smcfcper.getVer());
 smcfcper.checkUpdate();
