@@ -1,3 +1,5 @@
+const smcfModulesDir = smcfPluginDir + "modules/", smcfModulesCfg = smcfPluginDir + "smcf.modules.ini";
+
 let loadSmcfModules = () => $.get(smcfModulesCfg, data => {
 	console.info("[smcfcper] 开始载入 smcf 模块");
 	let lines = data.trim().split('\n');
@@ -19,7 +21,7 @@ let loadSmcfModules = () => $.get(smcfModulesCfg, data => {
 		});
 
 		let enabled = parts[0];
-		enabled? scripts.push(smcfModuDir + parts[0]): undefined;
+		enabled? scripts.push(smcfModulesDir + parts[0]): undefined;
 	}
 
 	loadScripts(scripts);

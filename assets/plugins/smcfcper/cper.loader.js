@@ -1,9 +1,7 @@
 const pluginsDir = "assets/plugins/", modulesDir = "assets/modules/";
-const smcfModuDir = modulesDir + "smcf/", smcfPlugDir = pluginsDir + "smcf/";
-const cperModuDir = modulesDir + "smcfcper/", cperPlugDir = pluginsDir + "smcfcper/";
-const cperConfig = cperPlugDir + "cper.config.ini";
-const cperModulesCfg = cperPlugDir + "cper.modules.ini";
-const smcfModulesCfg = cperPlugDir + "smcf.modules.ini";
+const cperPluginDir = pluginsDir + "smcfcper/", cperModulesDir = cperPluginDir + "modules/";
+const cperConfig = cperPluginDir + "cper.config.ini", cperModulesCfg = cperPluginDir + "cper.modules.ini";
+const smcfPluginDir = pluginsDir + "smcf.js/";
 
 const loadScripts = (scripts) => {
 	let loaded = 0;
@@ -50,8 +48,8 @@ let loadSmcfcperModules = () => {
 				return part.trim();
 			});
 
-			parts[2] === "cper"? scripts.push(cperModuDir + parts[0]): undefined;
-			parts[2] === "smcf"? scripts.push(smcfModuDir + parts[0]): undefined;
+			parts[2] === "cper"? scripts.push(cperModulesDir + parts[0]): undefined;
+			parts[2] === "smcf"? scripts.push(smcfPluginDir + parts[0]): undefined;
 			parts[2] === "plug"? scripts.push(pluginsDir + parts[1] + '/' + parts[0]): undefined;
 		}
 

@@ -4,8 +4,8 @@ const result = document.querySelector("#result"), auxiliary = document.querySele
 const smcfcper = {
 	appName: "SMCFCompiler",
 	appNameShort: "smcfcper",
-	version: "v1.3.1-1",
-	buildVer: "(20240522)",
+	version: "v1.3.2",
+	buildVer: "(20240524)",
 	buildType: "Beta",
 	license: "",
 	author: "XiaozhiSans",
