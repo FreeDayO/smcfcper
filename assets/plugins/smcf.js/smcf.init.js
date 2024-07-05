@@ -1,30 +1,11 @@
-const smcfModulesDir = smcfPluginDir + "modules/", smcfModulesCfg = smcfPluginDir + "smcf.modules.ini";
-
-let loadSmcfModules = () => $.get(smcfModulesCfg, data => {
-	console.info("[smcfcper] 开始载入 smcf 模块");
-	let lines = data.trim().split('\n');
-	let scripts = [];
-
-	for (let line of lines) {
-		line = line.trim();
-
-		// 忽略注释和空行
-		let isComment = (line.startsWith(';') || line.startsWith('#'));
-		if(isComment || line === '') {
-			continue;
-		}
-
-		line = line.replace(/#.*/g ,'')
-
-		let parts = line.split('|').map(part => {
-			return part.trim();
-		});
-
-		let enabled = parts[0];
-		enabled? scripts.push(smcfModulesDir + parts[0]): undefined;
-	}
-
-	loadScripts(scripts);
-});
-
-loadSmcfModules();
+/**
+ * smcf.init.js for smcfcper
+ * by @XiaozhiSans
+ */
+(()=>{let path = "./assets/plugins/smcf.js/";
+console.log("[smcf] 开始加载 smcf 模块");
+import(`${path}smcf.modules.js`).then(i => i.modules.forEach(i => i[0].startsWith('*')?0:(()=>{
+	$.getScript(`${path}modules/${i[0]}`)
+	.then(console.log(`[smcf] 模块: ${i[0]} 加载完毕`))
+	.catch(e => {console.warn(`[smcf] 模块: ${i[0]} 加载失败, 原因:\n\n${e}\n`)});
+})()));})();

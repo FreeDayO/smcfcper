@@ -1,6 +1,40 @@
 /* 
  * style.css
  */
+@keyframes loading {
+	from {transform: rotate(0deg);}
+	to   {transform: rotate(360deg);}
+}
+load {
+	width: 100%;
+	height: 100%;
+	color: #fff;
+	background-color: #000000f0;
+	z-index: 100;
+	position: fixed;
+	left: 0;
+	top: 0;
+	display: flex;
+	align-content: center;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+load>text {
+	font-size: 2.5em;
+	margin-top: 60px;
+}
+.load-icon {
+	display: block;
+	width: 256px;
+	height: 256px;
+	background: url('https://filecdn-images.xingyeai.com/image_inference_output/nebula/prod/img/2024-04-20/c06d7c14-8858-4755-a182-0758bf04faf2-1.jpeg') no-repeat;
+	background-size: cover;
+	border-radius: 100%;
+	animation: loading linear 5s infinite;
+	position: absolute;
+	top: 16%;
+}
 
 body {
 	background: url('https://filecdn-images.xingyeai.com/image_inference_output/nebula/prod/img/2024-04-20/c06d7c14-8858-4755-a182-0758bf04faf2-1.jpeg') fixed no-repeat center;
@@ -9,8 +43,8 @@ body {
 }
 
 @keyframes color {
-	0%	{color: red;}
-	8.3%	{color: orange;}
+	0%    {color: red;}
+	8.3%  {color: orange;}
 	16.6% {color: yellow;}
 	24.9% {color: green;}
 	33.2% {color: blue;}
@@ -19,13 +53,13 @@ body {
 	58.1% {color: indigo;}
 	66.4% {color: blue;}
 	74.7% {color: green;}
-	83% {color: yellow;}
+	83%   {color: yellow;}
 	91.3% {color: orange;}
-	100% {color: red;}
+	100%  {color: red;}
 }
 @keyframes bgColor {
-	0%	{background: red;}
-	8.3%	{background: orange;}
+	0%    {background: red;}
+	8.3%  {background: orange;}
 	16.6% {background: yellow;}
 	24.9% {background: green;}
 	33.2% {background: blue;}
@@ -34,24 +68,24 @@ body {
 	58.1% {background: indigo;}
 	66.4% {background: blue;}
 	74.7% {background: green;}
-	83% {background: yellow;}
+	83%   {background: yellow;}
 	91.3% {background: orange;}
-	100% {background: red;}
+	100%  {background: red;}
 }
 @keyframes textCurColor {
-	0%	{caret-color: red;}
-	8.3%	{caret-color: orange;}
-	16.6% {caret-color: yellow;}
-	24.9% {caret-color: green;}
-	33.2% {caret-color: blue;}
-	41.5% {caret-color: indigo;}
-	49.8% {caret-color: violet;}
-	58.1% {caret-color: indigo;}
-	66.4% {caret-color: blue;}
-	74.7% {caret-color: green;}
-	83% {caret-color: yellow;}
-	91.3% {caret-color: orange;}
-	100% {caret-color: red;}
+	0%    {Paint: red;}
+	8.3%  {Paint: orange;}
+	16.6% {Paint: yellow;}
+	24.9% {Paint: green;}
+	33.2% {Paint: blue;}
+	41.5% {Paint: indigo;}
+	49.8% {Paint: violet;}
+	58.1% {Paint: indigo;}
+	66.4% {Paint: blue;}
+	74.7% {Paint: green;}
+	83%   {Paint: yellow;}
+	91.3% {Paint: orange;}
+	100%  {Paint: red;}
 }
 .fa, .fa-solid {
 	animation: color 15s infinite;
@@ -70,21 +104,25 @@ body {
 	font-size: 16px;
 	border-radius: 10px;
 }
-.tab {
-	padding: 2px;
-	margin-top: calc(-20vh);
-	margin-left: -8px;
-	background: url(../images/smcfcper.tab.webp) fixed no-repeat;
-	background-size: 100% auto;
+/* .tab {
+	top: 0;
+	left: 0;
+	background: url(../images/smcfcper.tab.webp) no-repeat;
+	background-size: cover;
 	color: transparent;
-	/* border-radius: 0 0 10px 10px; */
-	font-size: 40px;
 	position: fixed;
 	z-index: 100;
+	width: 100vw;
+	height: 20vh;
+} */
+.title {
+	position: fixed;
+	font-size: 5em;
+	font-family: "fira code";
+	top: 0;
+	left: 0;
+	background-color: #000;
 	width: 100%;
-	/* text-shadow: #ccc 2px 2px 3px;
-	animation: color 5s infinite; */
-	/* box-shadow: 0 1px black; */
 }
 sidebar {
 	padding: 10px;
@@ -118,9 +156,6 @@ dl#sidebar>dt>button>i {
 	flex-direction: column;
 	height: 100%;
 }
-.codeBox, .reslutBox {
-	height: 45%;
-}
 noscript>dialog {
 	z-index: 114514;
 }
@@ -143,6 +178,7 @@ a::after {
 	font-family: "Font Awesome 6 Free";
 	font-weight: 900;
 	content: "\f35d";
+	margin-left: 0.5em;
 }
 i, div>span {
 	user-select: none;
@@ -162,39 +198,30 @@ footer {
 	position: fixed;
 	bottom: 0;
 	z-index: -1;
-	left: calc(50vw);
+	right: 0
+}
+footer>p {
+	text-align: right;
 }
 
-code, #code {
+[smcfcode] {
 	font-family: "fira code";
 	font-size: 20px;
 	font-weight: normal;
 	transition: all 2s;
-}
-.codeBox {
-	display: grid;
-}
-#code, #codeHlP {
-	grid-area: 2 / 1 / 3 / 2;
-}
-code#codeHl, #codeHlP {
-	max-width: calc(100vw);
-}
-div#code {
 	overflow-x: auto;
 	padding: 1em;
-	color: transparent;
-	z-index: 1;
-	margin-top: 12px;
+	margin: 12px 0 12px 12px;
 	animation: textCurColor 15s infinite;
 	outline: none;
+	background-color: #000;
 }
 div#code:empty:before {
 	content: attr(tip);
 	position: absolute;
 	color: grey;
 }
-div#messageBox {
+#messageBox {
 	/* padding: 16px; */
 	font-size: 24px;
 	top: calc(60vh);
@@ -209,10 +236,10 @@ div#messageBox {
 div#messageBox[new] {
 	right: 16px;
 }
-div#mainWindow {
+#mainWindow {
 	margin-top: calc(20vh);
 }
-div#aboutWindow {
+#aboutWindow {
 	position: absolute;
 	top: calc(20vh);
 	left: calc(20vw);
@@ -325,12 +352,6 @@ div.subWindow:hover>* {
 		background-color: #d5d3d4;
 		background-position: right;
 	}
-	.tab {
-		height: calc(10vh);
-		background-size: auto;
-		background-color: black;
-		margin-top: calc(-20vh);
-	}
 	sidebar {
 		right: calc(-2vw);
 	}
@@ -386,11 +407,24 @@ div.subWindow:hover>* {
 }
 
 html {
+	--display-fonts: "HarmonyOS Sans", 方正兰亭黑, 微软雅黑, "Microsoft Yahei";
+	font-family: var(--display-fonts);
 	transition: background-color 2s;
 }
-/* html[light] {
-	background-color: #d5d3d4;
-}
-html[light]>body>div.box {
-	background-color: #fffa;
-} */
+
+/* 代码高亮颜色 */
+.cb {color: #ff1493 !important;}
+.cm-activeLine {background-color: #ffc0cb69;}
+.cm-tooltip {background-color: #000 !important; border-color: #444 !important;}
+/* .cm-line {color: #00bfff; background-color: #444;}
+.tok-keyword, .fn, .keyword {color: #708;}
+.tok-atom, .tok-bool {color: #219;}
+.tok-number, .prim {color: #164;}
+.tok-variableName.tok-definition, .tok-attribute {color: #30b;}
+.tok-variableName2, .tok-typeName, .type {color: #05a;}
+.tok-comment {color: #a50;}
+.tok-string, .string {color: #a11;}
+.tok-string2 {color: #f50;}
+.tok-meta {color: #555;}
+.tok-tag {color: #170;}
+.tok-invalid {color: #c00;} */

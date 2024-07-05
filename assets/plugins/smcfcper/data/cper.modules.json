@@ -1,0 +1,6 @@
+[
+	["*cper.js", "smcfcper", "smcfcper 核心模块"],
+	["cper.getIdList.js", "getIdList", "获取 idList 模块"],
+	["cper.hotkey.js", "reloadHotkey", "热键模块"],
+	["*cper.msg.js", "msg", "消息模块"]
+]

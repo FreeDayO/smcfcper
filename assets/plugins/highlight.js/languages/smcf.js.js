@@ -639,8 +639,8 @@
     };
 
     return {
-      name: 'JavaScript',
-      aliases: ['js', 'jsx', 'mjs', 'cjs'],
+      name: 'smcfjs',
+      aliases: ['js', 'smcfjs', 'mjs', 'smcf.js'],
       keywords: KEYWORDS$1,
       // this will be extended by TypeScript
       exports: { PARAMS_CONTAINS, CLASS_REFERENCE },

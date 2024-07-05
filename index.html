@@ -17,26 +17,14 @@
 		<link rel="icon" type="image/png" sizes="192x192" href="assets/images/smcfcper.icon.png">
 		<link rel="apple-touch-icon" type="image/png" sizes="192x192" href="assets/images/smcfcper.icon.png">
 
+		<!-- 预加载项 -->
 		<link rel="stylesheet" type="text/css" href="assets/stylesheets/style.css">
 		<script type="text/javascript" src="assets/plugins/jquery@3.5.1/jquery.min.js"></script>
-		<script type="text/javascript" src="assets/plugins/smcfcper/cper.loader.js"></script>
+		<script type="text/javascript" src="assets/plugins/codemirror6/codemirror.js"></script>
+		<script type="text/javascript" src="assets/plugins/commonlib/clib.static.js"></script>
+		<script type="module" src="assets/plugins/smcfcper/cper.init.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/plugins/fira_code/fira_code.css">
 		<link rel="stylesheet" type="text/css" href="assets/plugins/fontawesome-free-6.5.2-web/css/all.min.css">
-		<link rel="stylesheet" type="text/css" href="assets/plugins/highlight.js/styles/github-dark.min.css">
-		<script type="text/javascript" src="assets/plugins/highlight.js/highlight.min.js"></script>
-		<script type="text/javascript" src="assets/plugins/highlight.js/languages/smcf.js.js"></script>
-		<script type="text/javascript" src="assets/plugins/highlight.js/languages/mcf.js"></script>
-		<!--<script type="text/javascript" src="assets/plugins/hljs.linenum/js/linenum.js"></script>
-		<link rel="stylesheet" type="text/css" href="assets/plugins/hljs.linenum/css/linenum.css">-->
-		<script>
-			// 初始化 sw.js
-			if(navigator.serviceWorker) {
-				navigator.serviceWorker.register('sw.js')
-				.then(function(registration) {
-					console.log('Registered events at scope: ', registration.scope);
-				});
-			}
-		</script>
 	</head>
 
 	<body>
@@ -47,34 +35,17 @@
 			</dialog>
 		</noscript>
 
-		<dialog open><i class="fa-solid fa-circle-notch fa-spin"></i>很快就好...<br><i style="font-size: 16px;">如果长时间加载请刷新页面重试</i></dialog>
+		<load>
+			<i class="load-icon"></i>
+			<text>少女祈祷中...</text>
+		</load>
 
-		<i class="tab">SMCFcper</i>
-		<div class="box" id="mainWindow">
-			<div class="codeBox">
-				<span>
-					<label for="code"><i class="fa-solid fa-code"></i> main.smcf.js</label>
-					<!-- <button id="openSmcf" class="iconBtn" tooltip="打开源文件(Ctrl + O)" onclick="$('#fileInput').click();"><i class="fa-solid fa-folder-open fa-2x"></i></button> -->
-				</span>
-				<pre id="codeHlP"><code class="language-javascript" id="codeHl"></code></pre>
-				<div contenteditable="true" id="code" tip="// code here...">smcf.say("Hello, smcf.js!");</div>
-				<!-- <textarea id="code">say("Hello, smcf.js!");</textarea> -->
-			</div>
-			<span tooltip="编译" onclick="smcfcper.main();">
-				<i class="fa-solid fa-arrow-down fa-3x arrow" id="mobile"></i>
-				<i class="fa-solid fa-arrow-right fa-3x arrow" id="desktop"></i>
-			</span>
-			<div class="resultBox">
-				<label for="result"><i class="fa-solid fa-code"></i> main.mcfunction</label>
-				<span style="display: inline-block;">
-					<button class="iconBtn" onclick="smcfcper.copy();" tooltip="复制(Ctrl + C)"><i class="fa-solid fa-copy fa-2x"></i></button>
-					<button class="iconBtn" onclick="smcfcper.clear();" tooltip="清屏(Ctrl + Del)"><i class="fa-solid fa-eraser fa-2x"></i></button>
-					<button class="iconBtn" onclick="smcfcper.save();" tooltip="保存到本地(Ctrl + Alt + S)"><i class="fa-solid fa-floppy-disk fa-2x"></i></button>
-				</span>
-				<pre><code class="language-mcf" id="result"># 编译姬: ( •̀ ω •́ )✧ 欢迎~</code></pre>
-			</div>
-			<!-- <input type="submit" name="submit" onclick="smcfcper.main();"> -->
-			<!-- <button type="submit" onclick="smcfcper.main();">提交(<code>Ctrl</code> + <code>Enter</code>)</button> -->
+		<tab class="title" class!="tab"><span style="color: #000; background: #fff;">SMCF</span><span style="color: #fff; background: #000;">cper</span></tab>
+
+		<div id="mainWindow">
+			<form id="code" onsubmit="return false;">
+				<div smcfcode></div>
+			</form>
 		</div>
 
 		<!-- 为循环优化算法做准备 -->

@@ -1,10 +1,8 @@
-smcfcper.getIdList = useProxy => {
-	(!useProxy || useProxy == '')? useProxy = false: useProxy = true;
+export const getIdList = (useProxy = this.settings.useProxy) => {
+	smcfcper.log(`[smcfcper] 开始获取 idList, jsDelivr 代理: ${useProxy}`);
 
-	console.info(`[smcfcper] 开始获取 idList, jsDelivr 代理: ${useProxy}`);
-
-	(useProxy)? idListJson = "https://cdn.jsdelivr.net/gh/XeroAlpha/caidlist/output/translation/release/vanilla.json":
-	idListJson = "https://raw.githubusercontent.com/XeroAlpha/caidlist/master/output/translation/release/vanilla.json";
+	idListJson = (useProxy)? "https://cdn.jsdelivr.net/gh/XeroAlpha/caidlist/output/translation/release/vanilla.json":
+	"https://raw.githubusercontent.com/XeroAlpha/caidlist/master/output/translation/release/vanilla.json";
 
 	(typeof triedTimes === "undefined")? triedTimes = 1: null;
 	$.get(idListJson, data => {
@@ -19,13 +17,11 @@ smcfcper.getIdList = useProxy => {
 		globalThis.slots = data.entitySlot.provided,			globalThis.loots = data.lootTable.provided,
 		globalThis.damageCauses = data.damageCause.provided,	globalThis.recipes = data.recipe.provided;
 
-		console.info("[smcfcper] 获取 idList 成功");
+		smcfcper.log("[smcfcper] 获取 idList 成功");
 	}).fail = (useProxy => {
 		if(triedTimes >= 2) {console.warn("[smcfcper] 获取 idList 失败"); return;}
-		console.warn(`[smcfcper] 获取 idList 失败, 尝试使用 jsDelivr 代理 ${!useProxy} 重新获取`);
+		console.warn(`[smcfcper] 获取 idList 失败, 尝试使用 jsDelivr 代理 (${!useProxy}) 重新获取`);
 		triedTimes++; smcfcper.getIdList(!useProxy);
 	});
 
 }
-
-smcfcper.getIdList();

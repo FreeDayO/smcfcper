@@ -1,15 +1,14 @@
-smcfcper.reloadHotkey = () => {
-	console.info("[cperHotkey] 正在注册热键");
+export const reloadHotkey = () => {
+	smcfcper.log("正在注册热键");
 	document.addEventListener("keydown", event => {
-		(event.ctrlKey && event.key == "Enter")? smcfcper.main(): undefined;
-		(event.key == "Escape")? smcfcper.exit(): undefined;
-		(event.ctrlKey && (event.key == "c" || event.key == "C"))? smcfcper.copy(): undefined;
-		(event.ctrlKey && event.key == "Delete")? smcfcper.clear(): undefined;
-		(event.ctrlKey && (event.key == "o" || event.key == "O"))? $('#fileInput').click(): undefined;
-		(event.ctrlKey && event.altKey && (event.key == "s" || event.key == "S"))? smcfcper.save(): undefined;
+		(event.ctrlKey && event.key == "Enter")? smcfcper.cp(): 0;
+		(event.key == "Escape")? smcfcper.exit(): 0;
+		(event.ctrlKey && (event.key == "c" || event.key == "C"))? smcfcper.copy(): 0;
+		(event.ctrlKey && event.key == "Delete")? smcfcper.clear(): 0;
+		(event.ctrlKey && (event.key == "o" || event.key == "O"))? $('#fileInput').click(): 0;
+		(event.ctrlKey && event.altKey && (event.key == "s" || event.key == "S"))? smcfcper.save(): 0;
 	});
-	console.info("[cperHotkey] 热键注册完毕,重新注册请执行 smcfcper.reloadHotkey(); ");
-	return "热键注册完毕";
+	smcfcper.log("热键注册完毕, 重新注册请执行 smcfcper.reloadHotkey();");
 }
 
-smcfcper.reloadHotkey();
+reloadHotkey();

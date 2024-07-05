@@ -1,4 +1,4 @@
-smcf.block = {
+const block = {
     about : "~",
     PI : 3.14,
     default_x : 0,

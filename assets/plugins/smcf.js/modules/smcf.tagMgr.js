@@ -1,4 +1,4 @@
-smcf.tagMgr = function(cmd, target, str) {
+const tagMgr = (cmd, target, str) => {
 	if(!cmd || cmd == '') {
 		put("# error on tag.mgr(): 命令参数不能为空!");
 		return;

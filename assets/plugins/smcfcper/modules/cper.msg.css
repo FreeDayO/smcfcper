@@ -1,0 +1,49 @@
+@keyframes msg {
+	0% {
+		right: -100px;
+		background-color: #00bfffc5;
+	}
+	50% {background-color: #00bfffa0;}
+	100% {
+		right: 12px;
+		background-color: #00bfff6c;
+	}
+}
+
+div.msg {
+	animation: msg ease-in-out 0.8s;
+	top: 8px;
+	right: 12px;
+	position: fixed;
+	transition: right 1s;
+	display: inline-flex;
+	min-width: 120px;
+	background-color: #00bfff6c;
+	border-radius: 10px;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-content: space-around;
+	justify-content: center;
+	align-items: center;
+}
+
+div.msg:not([msg-num="1"]) {
+	display: none;
+}
+
+.msg-title {
+	font-size: 16px;
+	color: #ff0;
+	margin-left: 16px;
+}
+.msg-content {
+	font-size: 12px;
+	color: #fff;
+}
+.msg-icon {
+	animation: none;
+	position: absolute;
+	left: 10px;
+	top: 16px;
+	color: #ff0;
+}
