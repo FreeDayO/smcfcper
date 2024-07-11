@@ -1,4 +1,4 @@
-smcf.for = (cmd, times, step) => {
+const smcffor = (cmd, times, step) => {
 	if(!times || times === '' || times === 0) {
 		put("# smcf.for()错误: 次数不能为0");
 		return;

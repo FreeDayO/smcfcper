@@ -86,7 +86,7 @@ const smcf = {
     put(str) {
         // 适配编译器
         // document.write(str + EOL);
-        result.innerHTML += ('\n' + str);
+        result.value += ('\n' + str);
         return str;
     },
     setblock(block,xyz) {
@@ -98,4 +98,4 @@ const smcf = {
     // 嘿嘿啊哈哈哈
 }
 
-var put = smcf.put;
+globalThis.put = smcf.put;

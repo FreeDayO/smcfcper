@@ -205,7 +205,7 @@ footer>p {
 }
 
 [smcfcode] {
-	font-family: "fira code";
+	font-family: "fira code" !important;
 	font-size: 20px;
 	font-weight: normal;
 	transition: all 2s;
@@ -260,25 +260,16 @@ div#messageBox[new] {
 	border-bottom: 1px solid #eec;
 	cursor: move;
 } */
-button.iconBtn {
+button.icon {
+	font-size: 1.5em;
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
 	margin: 6px;
 }
-button.iconBtn:hover {
-	-webkit-animation-name: fa-bounce;
-					animation-name: fa-bounce;
-	-webkit-animation-delay: var(--fa-animation-delay, 0s);
-					animation-delay: var(--fa-animation-delay, 0s);
-	-webkit-animation-direction: var(--fa-animation-direction, normal);
-					animation-direction: var(--fa-animation-direction, normal);
-	-webkit-animation-duration: var(--fa-animation-duration, 1s);
-					animation-duration: var(--fa-animation-duration, 1s);
-	-webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-					animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-	-webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
-					animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+button.icon:hover {
+	transform: rotate(360deg);
+	transition: transform 2s;
 }
 button.normal {
 	padding: 16px;
@@ -392,10 +383,10 @@ div.subWindow:hover>* {
 		background-color: #181a1b !important;
 		color: white;
 	}
-	button.iconBtn[tooltip="夜间"] {
+	button.icon[tooltip="夜间"] {
 		display: none;
 	}
-	button.iconBtn[tooltip="日间"] {
+	button.icon[tooltip="日间"] {
 		display: block;
 	}
 	div.box {
@@ -414,17 +405,8 @@ html {
 
 /* 代码高亮颜色 */
 .cb {color: #ff1493 !important;}
+.ͼe {color: #6a9955 !important;}
 .cm-activeLine {background-color: #ffc0cb69;}
 .cm-tooltip {background-color: #000 !important; border-color: #444 !important;}
-/* .cm-line {color: #00bfff; background-color: #444;}
-.tok-keyword, .fn, .keyword {color: #708;}
-.tok-atom, .tok-bool {color: #219;}
-.tok-number, .prim {color: #164;}
-.tok-variableName.tok-definition, .tok-attribute {color: #30b;}
-.tok-variableName2, .tok-typeName, .type {color: #05a;}
-.tok-comment {color: #a50;}
-.tok-string, .string {color: #a11;}
-.tok-string2 {color: #f50;}
-.tok-meta {color: #555;}
-.tok-tag {color: #170;}
-.tok-invalid {color: #c00;} */
+.cm-content {font-family: "fira code" !important; caret-color: #fff !important;}
+.cm-line {color: #00bfff; background-color: #4442; caret-color: #fff !important;}

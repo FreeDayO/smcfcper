@@ -40,12 +40,14 @@
 			<text>少女祈祷中...</text>
 		</load>
 
-		<tab class="title" class!="tab"><span style="color: #000; background: #fff;">SMCF</span><span style="color: #fff; background: #000;">cper</span></tab>
+		<tab class="title" class!="tab" tooltip="smcfcper"><span style="color: #000; background: #fff;">SMCF</span><span style="color: #fff; background: #000;"><sup style="position: absolute; margin-top: -8px;">cper</sup></span></tab>
 
 		<div id="mainWindow">
 			<form id="code" onsubmit="return false;">
-				<div smcfcode></div>
+				<button tooltip="编译" class="icon" onclick="smcfcper.cp();"><i class="fa-solid fa-code"></i></button>
+				<div style="padding: 0; margin: 0;" smcfcode></div>
 			</form>
+			<textarea result></textarea>
 		</div>
 
 		<!-- 为循环优化算法做准备 -->
@@ -56,7 +58,7 @@
 
 		<div class="box" id="aboutWindow" style="display: none;">
 			<label><img src="assets/images/smcfcper.icon.png" width="26px" height="26px" alt="smcfcper.icon.png"> 关于</label>
-			<button class="iconBtn" style="position: absolute; top: 0; right: 0;" tooltip="关闭" onclick="$('#aboutWindow').css('display', 'none');"><i class="fa-solid fa-xmark fa-2x"></i></button>
+			<button class="icon" style="position: absolute; top: 0; right: 0;" tooltip="关闭" onclick="$('#aboutWindow').css('display', 'none');"><i class="fa-solid fa-xmark fa-2x"></i></button>
 			<p>
 				<h2>SMCFcper</h2>
 
@@ -71,7 +73,7 @@
 
 				smcfcper 的诞生离不开这些项目:
 				<ol>
-				0. 排名不分前后
+				<p style="margin-left: -1em;">0. 排名不分前后</p>
 
 				<li> <a href="https://github.com/FreeDayO/smcf.js">FreeDayO/smcf.js</a></li>
 				<li> <a href="https://github.com/tonsky/FiraCode">tonsky/FiraCode</a></li>
@@ -89,18 +91,15 @@
 			<p>侧栏</p>
 			<dl id="sidebar">
 				<!-- <dt><span>
-					<button class="iconBtn" tooltip="夜间" onclick="smcfcper.theme('dark');"><i class="fa-solid fa-cloud-moon fa-2x"></i></button>
-					<button class="iconBtn" tooltip="日间" onclick="smcfcper.theme('light');"><i class="fa-solid fa-sun fa-2x"></i></button>
+					<button class="icon" tooltip="夜间" onclick="smcfcper.theme('dark');"><i class="fa-solid fa-cloud-moon fa-2x"></i></button>
+					<button class="icon" tooltip="日间" onclick="smcfcper.theme('light');"><i class="fa-solid fa-sun fa-2x"></i></button>
 				</span></dt> -->
-				<dt><button class="iconBtn" tooltip="编译姬"><i class="fa-solid fa-code fa-2x"></i></button></dt>
-				<dt><button class="iconBtn" tooltip="设置"><i class="fa-solid fa-gear fa-2x"></i></button></dt>
-				<dt><button class="iconBtn" tooltip="关于" onclick="$('#aboutWindow').css('display', 'block');"><i class="fa-solid fa-face-smile fa-2x"></i></button></dt>
+				<dt><button class="icon" tooltip="编译姬"><i class="fa-solid fa-code fa-2x"></i></button></dt>
+				<dt><button class="icon" tooltip="设置"><i class="fa-solid fa-gear fa-2x"></i></button></dt>
+				<dt><button class="icon" tooltip="关于" onclick="$('#aboutWindow').css('display', 'block');"><i class="fa-solid fa-face-smile fa-2x"></i></button></dt>
 			</dl>
 		</sidebar>
 
-		<div id="messageBox">
-			<i class="fa-solid fa-message fa-shake" id="message"></i>
-		</div>
 
 		<footer>
 			<p>
@@ -112,7 +111,8 @@
 
 		<div style="display: none;">
 			<input type="file" id="fileInput">
-			<a href="" download="smcf.mcpack" id="mcf"></a>
+			<a href="" download="main.mcfunction" id="mcf"></a>
+			<a href="" download="smcf.mcpack" id="mcp"></a>
 		</div>
 
 		<script type="text/javascript">

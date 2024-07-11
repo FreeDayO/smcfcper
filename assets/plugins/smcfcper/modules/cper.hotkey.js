@@ -10,5 +10,3 @@ export const reloadHotkey = () => {
 	});
 	smcfcper.log("热键注册完毕, 重新注册请执行 smcfcper.reloadHotkey();");
 }
-
-reloadHotkey();

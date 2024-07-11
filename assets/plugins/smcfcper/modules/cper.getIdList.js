@@ -1,27 +1,23 @@
-export const getIdList = (useProxy = this.settings.useProxy) => {
-	smcfcper.log(`[smcfcper] 开始获取 idList, jsDelivr 代理: ${useProxy}`);
+export const getIdList = (useProxy = smcfcper.settings.useProxy) => {
+	smcfcper.log(`开始获取 idList, jsDelivr 代理: ${useProxy}`);
 
-	idListJson = (useProxy)? "https://cdn.jsdelivr.net/gh/XeroAlpha/caidlist/output/translation/release/vanilla.json":
-	"https://raw.githubusercontent.com/XeroAlpha/caidlist/master/output/translation/release/vanilla.json";
+	let idListJson = (useProxy)? "https://fastly.jsdelivr.net/gh/XeroAlpha/caidlist/output/translation/release/vanilla.json":
+	"https://raw.githubusercontent.com/XeroAlpha/caidlist/master/output/translation/release/vanilla.json", triedTimes = 0;
 
-	(typeof triedTimes === "undefined")? triedTimes = 1: null;
-	$.get(idListJson, data => {
-		data = $.parseJSON(data.replace(/\n|\s/g, '').replace(/,\]/g, ']').replace(/,\}/g, '}'));
+	(triedTimes === 0)? triedTimes = 1: null;
+	$.get(idListJson, json => {
+		json = $.parseJSON(json.replace(/\n|\s/g, '').replace(/,\]/g, ']').replace(/,\}/g, '}'));
 
-		globalThis.blocks = data.block.provided,				globalThis.items = data.item.provided,
-		globalThis.entities = data.entity.provided,				globalThis.effects = data.effect.provided,
-		globalThis.enchants = data.enchant.provided,			globalThis.locations = data.location.provided,
-		globalThis.biomes = data.biome.provided,				globalThis.familys = data.entityFamily.provided,
-		globalThis.animations = data.animation.provided,		globalThis.particles = data.particleEmitter.provided,
-		globalThis.sounds = data.sound.provided,				globalThis.gamerules = data.gamerule.provided,
-		globalThis.slots = data.entitySlot.provided,			globalThis.loots = data.lootTable.provided,
-		globalThis.damageCauses = data.damageCause.provided,	globalThis.recipes = data.recipe.provided;
+		globalThis.blocks = json.block.provided,				globalThis.items = json.item.provided,
+		globalThis.entities = json.entity.provided,				globalThis.effects = json.effect.provided,
+		globalThis.enchants = json.enchant.provided,			globalThis.locations = json.location.provided,
+		globalThis.biomes = json.biome.provided,				globalThis.familys = json.entityFamily.provided,
+		globalThis.animations = json.animation.provided,		globalThis.particles = json.particleEmitter.provided,
+		globalThis.sounds = json.sound.provided,				globalThis.gamerules = json.gamerule.provided,
+		globalThis.slots = json.entitySlot.provided,			globalThis.loots = json.lootTable.provided,
+		globalThis.damageCauses = json.damageCause.provided,	globalThis.recipes = json.recipe.provided;
 
-		smcfcper.log("[smcfcper] 获取 idList 成功");
-	}).fail = (useProxy => {
-		if(triedTimes >= 2) {console.warn("[smcfcper] 获取 idList 失败"); return;}
-		console.warn(`[smcfcper] 获取 idList 失败, 尝试使用 jsDelivr 代理 (${!useProxy}) 重新获取`);
-		triedTimes++; smcfcper.getIdList(!useProxy);
-	});
+		
+	}).then(smcfcper.log("获取 idList 成功")).catch(e => smcfcper.log(`获取 idList 失败, 原因:\n\n${e}\n`));
 
 }

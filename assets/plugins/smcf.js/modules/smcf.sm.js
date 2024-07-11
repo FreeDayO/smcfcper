@@ -83,3 +83,5 @@ const sound = {
 		put("music volume " + float);
 	}
 }
+
+const sm = {sound, music};

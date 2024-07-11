@@ -1,3 +1,6 @@
+const smcfcode = findEle("[smcfcode]");
+globalThis.result = findEle("[result]");
+
 export const smcfcper = {
 	info: {
 		appName: "SMCFCompiler",
@@ -9,5 +12,9 @@ export const smcfcper = {
 		author: "XiaozhiSans",
 		url: "https://github.com/FreeDayO/smcfcper"
 	},
-	cp() {}
+	cp() {
+		let code = smcfcode.innerText.replace(/((\d\n)+⌄?)|(\\n)|(\s)/g, '');
+		eval(code);
+		msg.crt("fa-solid fa-message", "编译完毕 ♪(´▽｀)", 3);
+	}
 }
