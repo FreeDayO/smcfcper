@@ -1,33 +1,34 @@
-#  ![smcfcper.tab.webp](assets/images/smcfcper.tab.webp)
+# <img src="assets/images/smcfcper.tab.webp" width="10000">
 
-##  SMCFcper
+## <img src="assets/images/smcfcper.webp" width="28"> SMCFcper
 
-[![Release smcfcper](https://github.com/FreeDayO/smcfcper/actions/workflows/release.yml/badge.svg)](https://github.com/FreeDayO/smcfcper/actions/workflows/release.yml) [![pages-build-deployment](https://github.com/FreeDayO/smcfcper/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/FreeDayO/smcfcper/actions/workflows/pages/pages-build-deployment)
+*SMCFcper* 是 *SMCFCompiler* 的缩写, 即 *SMCF 编译器*
 
-全称 ***SMCF Compiler***,即 ***smcf编译器***
-
-一个简单的 smcf 编译器web实现.
-
----
-
-## 如何使用
-
-1. [示例站点](https://smcfcper.off.gs/)
-
-2. 部署本地:
-
-	1. `git clone git@github.com:FreeDayO/smcfcper.git`或者下载[发行页](https://github.com/FreeDayO/smcfcper/releases)中的源代码包
-	2. `cd smcfcper`
-	3. 运行你的本地服务器软件
-	4. 访问对应页面
+### 📰 公告
+```text 公告.txt
+v2 版本的编译姬马上就能和大家见面啦! 请各位主人敬请期待哦! (o ^▽ ^)o☆
+```
 
 ---
-## 待办
+
+## 📂 如何使用
+
+### [📲 示例站点](https://smcfcper.off.gs/)
+
+### 💾 部署本地
+
+1. `git clone git@github.com:FreeDayO/smcfcper.git`或者下载[发行页](https://github.com/FreeDayO/smcfcper/releases)中的源代码包并解压
+2. `cd smcfcper`
+3. 运行你的本地服务器软件
+4. 访问对应页面
+
+---
+## 📑 待办
 
 
 0.  [x] 有什么建议可以提 issues 或者联系我
 
-1.  [ ] 添加代码补齐 [进度: 摆烂中/100]
+1.  [x] 添加代码补齐 [进度: 重构中 100/100]
 2.  [x] ~~css适配桌面端设备 [进度: 100/100]~~
 3.  [x] ~~适配pwa平台~~ [进度: 100/100]
 4.  [x] ~~自适应夜间主题/黑暗主题 [进度: 100/100]~~
@@ -40,9 +41,9 @@
 
 ---
 
-## 感谢
+## 💖 感谢
 
-smcfcper 的诞生离不开这些项目:
+SMCFcper 编译姬的诞生离不开这些项目:
 
 0. 排名不分前后
 
@@ -56,13 +57,13 @@ smcfcper 的诞生离不开这些项目:
 
 ---
 
-## 贡献者
+## 💦 贡献者
 
 [![仓库贡献者](https://contrib.rocks/image?repo=XiaozhiSans/smcfcper)](https://github.com/XiaozhiSans/smcfcper/graphs/contributors)
 
 ---
 
-## 协议
+## 📄 协议
 
 `待添加`
 
