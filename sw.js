@@ -1,102 +1,99 @@
-'use strict';
- 
-const cacheName = "smcfcper-cache"; // 缓存名
-const startPage = "/"; // 首页地址
-const offlinePage = "/"; // 离线首页地址
-const filesToCache = [startPage, offlinePage];
-
-// 不缓存的项目
-const neverCacheUrls = [/.*\.php/, /.*smcf.*/];
+"use strict";
+/** 缓存名 */
+const cache = "cper-cache";
+/** 首页 */
+const home = "/";
+/** 离线首页 */
+const offline = "/offline.html";
+/** 预缓存项 */
+const preCache = [home, offline];
+/** 排除项 */
+const neverCache = [/.*smcf.*/];
 
 // Install
-self.addEventListener('install', function(e) {
-  console.log('PWA service worker installation');
-  e.waitUntil(
-    caches.open(cacheName).then(function(cache) {
-      console.log('PWA service worker caching dependencies');
-      filesToCache.map(function(url) {
-        return cache.add(url).catch(function (reason) {
-          return console.log('PWA: ' + String(reason) + ' ' + url);
-        });
-      });
-    })
-  );
+self.addEventListener('install',(e) => {
+	console.log('[PWA] service worker installation');
+	e.waitUntil(
+		caches.open(cache).then((cache) => {
+			console.log('[PWA] service worker caching dependencies');
+			filesToCache.map((url) => {
+				return cache.add(url).catch((reason) => {
+					return console.log(`[PWA] ${reason} ${url}`);
+				});
+			});
+		})
+	);
 });
 
 // Activate
-self.addEventListener('activate', function(e) {
-  console.log('PWA service worker activation');
-  e.waitUntil(
-    caches.keys().then(function(keyList) {
-      return Promise.all(keyList.map(function(key) {
-        if ( key !== cacheName ) {
-          console.log('PWA old cache removed', key);
-          return caches.delete(key);
-        }
-      }));
-    })
-  );
-  return self.clients.claim();
+self.addEventListener('activate',(e) => {
+	console.log('[PWA] service worker activation');
+	e.waitUntil(
+		caches.keys().then((keyList) => {
+			return Promise.all(keyList.map((key) => {
+				if(key !== cache) {
+					console.log(`[PWA] old cache removed, key: ${key}`);
+					return caches.delete(key);
+				}
+			}));
+		})
+	);
+	return self.clients.claim();
 });
 
 // Fetch
-self.addEventListener('fetch', function(e) {
-  
-  // Return if the current request url is in the never cache list
-  if ( ! neverCacheUrls.every(checkNeverCacheList, e.request.url) ) {
-    console.log( 'PWA: Current request is excluded from cache.' );
-    return;
-  }
-  
-  // Return if request url protocal isn't http or https
-  if ( ! e.request.url.match(/^(http|https):\/\//i) )
-    return;
-  
-  // Return if request url is from an external domain.
-  if ( new URL(e.request.url).origin !== location.origin )
-    return;
-  
-  // For POST requests, do not use the cache. Serve offline page if offline.
-  if ( e.request.method !== 'GET' ) {
-    e.respondWith(
-      fetch(e.request).catch( function() {
-        return caches.match(offlinePage);
-      })
-    );
-    return;
-  }
-  
-  // Revving strategy
-  if ( e.request.mode === 'navigate' && navigator.onLine ) {
-    e.respondWith(
-      fetch(e.request).then(function(response) {
-        return caches.open(cacheName).then(function(cache) {
-          cache.put(e.request, response.clone());
-          return response;
-        });  
-      })
-    );
-    return;
-  }
+self.addEventListener('fetch',(e) => {
+	
+	/** 如果请求在排除项中则跳过缓存 */
+	if(!neverCache.every(() => {
+		if(this.match(url)) return false;
+		return true;
+	}, e.request.url)) {
+		console.log('[PWA]: Current request is excluded from cache.');
+		return;
+	}
+	
+	/** 如果请求协议不是http或者https则跳过缓存 */
+	if(! e.request.url.match(/^(http|https):\/\//i))
+		// return;
+	
+	/** 如果请求来自其他域名则跳过缓存 */
+	if(new URL(e.request.url).origin !== location.origin)
+		// return;
+	
+	/** 不缓存 POST 请求 若离线则提供离线页 */
+	if(e.request.method !== 'GET') {
+		e.respondWith(
+			fetch(e.request).catch(() => {
+				return caches.match(offline);
+			})
+		);
+		return;
+	}
+	
+	// Revving strategy
+	if(e.request.mode === 'navigate' && navigator.onLine) {
+		e.respondWith(
+			fetch(e.request).then((response) => {
+				return caches.open(cache).then((cache) => {
+					cache.put(e.request, response.clone());
+					return response;
+				});
+			})
+		);
+		return;
+	}
 
-  e.respondWith(
-    caches.match(e.request).then(function(response) {
-      return response || fetch(e.request).then(function(response) {
-        return caches.open(cacheName).then(function(cache) {
-          cache.put(e.request, response.clone());
-          return response;
-        });  
-      });
-    }).catch(function() {
-      return caches.match(offlinePage);
-    })
-  );
+	e.respondWith(
+		caches.match(e.request).then((response) => {
+			return response || fetch(e.request).then((response) => {
+				return caches.open(cache).then((cache) => {
+					cache.put(e.request, response.clone());
+					return response;
+				});
+			});
+		}).catch(() => {
+			return caches.match(offline);
+		})
+	);
 });
-
-// Check if current url is in the neverCacheUrls list
-function checkNeverCacheList(url) {
-  if ( this.match(url) ) {
-    return false;
-  }
-  return true;
-}
