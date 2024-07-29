@@ -10,7 +10,7 @@ load {
 	height: 100%;
 	color: #fff;
 	background-color: #000000f0;
-	z-index: 100;
+	z-index: 114;
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -37,9 +37,9 @@ load>text {
 }
 
 body {
-	background: url('https://filecdn-images.xingyeai.com/image_inference_output/nebula/prod/img/2024-04-20/c06d7c14-8858-4755-a182-0758bf04faf2-1.jpeg') fixed no-repeat center;
+	/* background: url('https://filecdn-images.xingyeai.com/image_inference_output/nebula/prod/img/2024-04-20/c06d7c14-8858-4755-a182-0758bf04faf2-1.jpeg') fixed no-repeat center;
 	background-size: auto 100%;
-	transition: all 2s;
+	transition: all 2s; */
 }
 
 @keyframes color {
@@ -93,36 +93,21 @@ body {
 		margin-left: 10px;
 }
 
-.hljs {
-	border-radius: 10px;
-}
-.panel {
-
-}
 [type="submit"] {
 	animation: bgColor 15s infinite;
 	font-size: 16px;
 	border-radius: 10px;
 }
-/* .tab {
-	top: 0;
-	left: 0;
-	background: url(../images/smcfcper.tab.webp) no-repeat;
-	background-size: cover;
-	color: transparent;
-	position: fixed;
-	z-index: 100;
-	width: 100vw;
-	height: 20vh;
-} */
 .title {
 	position: fixed;
-	font-size: 5em;
 	font-family: "fira code";
+	font-size: 4em;
+	font-weight: bold;
 	top: 0;
 	left: 0;
 	background-color: #000;
 	width: 100%;
+	z-index: 100;
 }
 sidebar {
 	padding: 10px;
@@ -205,16 +190,16 @@ footer>p {
 }
 
 [smcfcode] {
+	margin-top: 1.9em;
 	font-family: "fira code" !important;
 	font-size: 20px;
 	font-weight: normal;
 	transition: all 2s;
 	overflow-x: auto;
-	padding: 1em;
-	margin: 12px 0 12px 12px;
 	animation: textCurColor 15s infinite;
 	outline: none;
-	background-color: #000;
+	background: url("../images/freelucker.png") fixed top right no-repeat #000;
+	background-size: contain;
 }
 div#code:empty:before {
 	content: attr(tip);
@@ -237,7 +222,8 @@ div#messageBox[new] {
 	right: 16px;
 }
 #mainWindow {
-	margin-top: calc(20vh);
+	position: relative;
+	left: 0; top: 0;
 }
 #aboutWindow {
 	position: absolute;
@@ -250,16 +236,6 @@ div#messageBox[new] {
 	cursor: move;
 	user-select: none;
 }
-/* div#aboutWindow>label {
-	position: relative;
-	height: 28px;
-	z-index: 3;
-	background: #f3f3f3;
-	border-top-left-radius: 3px;
-	border-top-right-radius: 3px;
-	border-bottom: 1px solid #eec;
-	cursor: move;
-} */
 button.icon {
 	font-size: 1.5em;
 	border: none;
@@ -267,7 +243,7 @@ button.icon {
 	cursor: pointer;
 	margin: 6px;
 }
-button.icon:hover {
+button>i:hover {
 	transform: rotate(360deg);
 	transition: transform 2s;
 }
@@ -289,6 +265,7 @@ button.normal:active {
 }
 
 [tooltip]:hover::before, [tooltip]:focus::before {
+	transform: none;
 	padding: 6px;
 	display: block;
 	content: attr(tooltip);
@@ -303,6 +280,10 @@ button.normal:active {
 	animation: color 15s infinite;
 	pointer-events: none;
 	width: 100px;
+}
+
+[tooltip]:hover::before {
+	margin-left: auto;
 }
 
 .arrow#mobile {
@@ -356,10 +337,6 @@ div.subWindow:hover>* {
 	.arrow#desktop {
 		display: block;
 	}
-	#mainWindow {
-		flex-flow: row;
-		margin-top: calc(14vh);
-	}
 	#code, #codeHl, #result {
 		min-width: calc(35vw);
 	}
@@ -373,7 +350,7 @@ div.subWindow:hover>* {
 		width: calc(32vw);
 		max-height: calc(65vh);
 	}
-	[tooltip]:hover::before, [tooltip]:focus::before {
+	siderbar>[tooltip]:hover::before, siderbar>[tooltip]:focus::before {
 		margin-top: 25px;
 	}
 }
@@ -403,10 +380,16 @@ html {
 	transition: background-color 2s;
 }
 
+* {
+	padding: 0; margin: 0;
+}
+
 /* 代码高亮颜色 */
 .cb {color: #ff1493 !important;}
 .ͼe {color: #6a9955 !important;}
-.cm-activeLine {background-color: #ffc0cb69;}
+.ͼm {font-style: italic;}
+.cm-line {/*background-color: transparent !important;*/ border-top: transparent solid 0.25px; border-bottom: transparent solid 0.25px;}
+.cm-activeLine {background-color: unset !important; border-top: #00bfff solid 0.25px; border-bottom: #00bfff solid 0.25px;}
 .cm-tooltip {background-color: #000 !important; border-color: #444 !important;}
 .cm-content {font-family: "fira code" !important; caret-color: #fff !important;}
 .cm-line {color: #00bfff; background-color: #4442; caret-color: #fff !important;}

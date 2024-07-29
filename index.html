@@ -22,6 +22,7 @@
 		<script type="text/javascript" src="assets/plugins/jquery@3.5.1/jquery.min.js"></script>
 		<script type="text/javascript" src="assets/plugins/codemirror6/codemirror.js"></script>
 		<script type="text/javascript" src="assets/plugins/commonlib/clib.static.js"></script>
+		<script type="text/javascript" src="assets/plugins/clipboard.js/clipboard.min.js"></script>
 		<script type="module" src="assets/plugins/smcfcper/cper.init.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/plugins/fira_code/fira_code.css">
 		<link rel="stylesheet" type="text/css" href="assets/plugins/fontawesome-free-6.5.2-web/css/all.min.css">
@@ -40,14 +41,18 @@
 			<text>少女祈祷中...</text>
 		</load>
 
-		<tab class="title" class!="tab" tooltip="smcfcper"><span style="color: #000; background: #fff;">SMCF</span><span style="color: #fff; background: #000;"><sup style="position: absolute; margin-top: -8px;">cper</sup></span></tab>
+		<main>
+		<a href="."><tab class="title" class="tab"><span style="color: #000; background: #fff;">SMCF</span><span style="color: #fff; background: #000;"><sup style="position: absolute; margin-top: -8px;">cper</sup></span></tab></a>
 
-		<div id="mainWindow">
-			<form id="code" onsubmit="return false;">
-				<button tooltip="编译" class="icon" onclick="smcfcper.cp();"><i class="fa-solid fa-code"></i></button>
-				<div style="padding: 0; margin: 0;" smcfcode></div>
-			</form>
-			<textarea result></textarea>
+			<button type="button" tooltip="编译" class="icon" onclick="smcfcper.cp();"><i class="fa-solid fa-code"></i></button>
+			<ide>
+				<div smcfcode></div>
+			</ide>
+		</main>
+
+		<div id="popup" style="display: none;">
+			
+			<div result contenteditable="true"></div>
 		</div>
 
 		<!-- 为循环优化算法做准备 -->
@@ -58,7 +63,7 @@
 
 		<div class="box" id="aboutWindow" style="display: none;">
 			<label><img src="assets/images/smcfcper.icon.png" width="26px" height="26px" alt="smcfcper.icon.png"> 关于</label>
-			<button class="icon" style="position: absolute; top: 0; right: 0;" tooltip="关闭" onclick="$('#aboutWindow').css('display', 'none');"><i class="fa-solid fa-xmark fa-2x"></i></button>
+			<button type="button" class="icon" style="position: absolute; top: 0; right: 0;" tooltip="关闭" onclick="$('#aboutWindow').css('display', 'none');"><i class="fa-solid fa-xmark"></i></button>
 			<p>
 				<h2>SMCFcper</h2>
 
@@ -87,16 +92,16 @@
 			<button class="normal" onclick="$('#aboutWindow').css('display', 'none');">好</button>
 		</div>
 
-		<sidebar>
+		<sidebar style="display: none;">
 			<p>侧栏</p>
 			<dl id="sidebar">
 				<!-- <dt><span>
-					<button class="icon" tooltip="夜间" onclick="smcfcper.theme('dark');"><i class="fa-solid fa-cloud-moon fa-2x"></i></button>
-					<button class="icon" tooltip="日间" onclick="smcfcper.theme('light');"><i class="fa-solid fa-sun fa-2x"></i></button>
+					<button class="icon" tooltip="夜间" onclick="smcfcper.theme('dark');"><i class="fa-solid fa-cloud-moon"></i></button>
+					<button class="icon" tooltip="日间" onclick="smcfcper.theme('light');"><i class="fa-solid fa-sun"></i></button>
 				</span></dt> -->
-				<dt><button class="icon" tooltip="编译姬"><i class="fa-solid fa-code fa-2x"></i></button></dt>
-				<dt><button class="icon" tooltip="设置"><i class="fa-solid fa-gear fa-2x"></i></button></dt>
-				<dt><button class="icon" tooltip="关于" onclick="$('#aboutWindow').css('display', 'block');"><i class="fa-solid fa-face-smile fa-2x"></i></button></dt>
+				<dt><button class="icon" tooltip="编译姬"><i class="fa-solid fa-code"></i></button></dt>
+				<dt><button class="icon" tooltip="设置"><i class="fa-solid fa-gear"></i></button></dt>
+				<dt><button class="icon" tooltip="关于" onclick="$('#aboutWindow').css('display', 'block');"><i class="fa-solid fa-face-smile"></i></button></dt>
 			</dl>
 		</sidebar>
 
