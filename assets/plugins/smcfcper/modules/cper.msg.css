@@ -10,10 +10,11 @@
 	}
 }
 
-div.msg {
+.msg {
 	animation: msg ease-in-out 0.8s;
 	top: 8px;
 	right: 12px;
+	padding: 1em;
 	position: fixed;
 	transition: right 1s;
 	display: inline-flex;
@@ -25,9 +26,10 @@ div.msg {
 	align-content: space-around;
 	justify-content: center;
 	align-items: center;
+	z-index: 1000;
 }
 
-div.msg:not([msg-num="1"]) {
+.msg:not([msg-num="1"]) {
 	display: none;
 }
 

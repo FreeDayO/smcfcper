@@ -1,7 +1,7 @@
 {
-	"name": "SMCFCompiler",
-	"description": "简单的smcf编译器web实现",
-	"short_name": "smcfcper",
+	"name": "SMCFcper",
+	"description": "SMCF 编译姬",
+	"short_name": "cper",
 	"start_url": "/",
 	"scope": "/",
 	"lang": "zh",
@@ -11,5 +11,9 @@
 		"src": "assets/images/smcfcper.icon.png",
 		"sizes": "192x192",
 		"type": "image/png"
+	},{
+		"src": "assets/images/smcfcper.webp",
+		"sizes": "128x128",
+		"type": "image/webp"
 	}]
 }

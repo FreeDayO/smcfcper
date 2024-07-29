@@ -3,8 +3,8 @@ globalThis.result = findEle("[result]");
 
 export const smcfcper = {
 	info: {
-		appName: "SMCFCompiler",
-		appNameShort: "smcfcper",
+		appName: "SMCFcper",
+		appNameShort: "cper",
 		verName: "v2.0.0",
 		verCode: 20240630,
 		verType: "Beta",
@@ -16,5 +16,6 @@ export const smcfcper = {
 		let code = smcfcode.innerText.replace(/((\d\n)+⌄?)|(\\n)|(\s)/g, '');
 		eval(code);
 		msg.crt("fa-solid fa-message", "编译完毕 ♪(´▽｀)", 3);
-	}
+	},
+	log(...x) {console.log(`[smcfcper] ${x}`);}
 }

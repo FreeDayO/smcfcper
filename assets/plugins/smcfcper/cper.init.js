@@ -4,13 +4,13 @@ import modules from "./data/cper.modules.json" with {type: "json"};
 import plugins from "./data/cper.plugins.json" with {type: "json"};
 import * as msg from "./modules/cper.msg.js";
 const modulesDir = "./modules/", pluginsDir = "./assets/plugins/";
+const date = new Date();
 
-const bootsound = new Audio("assets/sounds/Valve- Alyx.m4a");
+if(date.getMonth() === 4 && date.getDate() === 1) {const bootsound = new Audio("assets/sounds/Valve- Alyx.m4a");
 globalThis.playBootSound = () => {bootsound.play().then(document.removeEventListener("mouseover", playBootSound));};
-document.addEventListener("mouseover", playBootSound);
+document.addEventListener("mouseover", playBootSound);}
 
-globalThis.smcfcper = smcfcper;
-smcfcper.log = (...x) => {console.log(`[smcfcper] ${x}`)},
+globalThis.smcfcper = smcfcper,globalThis.cper = smcfcper;
 smcfcper.initSettings = (s = df) => {smcfcper.settings = s; log("默认设置载入完毕");},
 smcfcper.getSettings = (s = window.localStorage.smcfcperSettings) => {
 	if(!s) {log("获取失败, 将载入默认设置"); smcfcper.initSettings();}
