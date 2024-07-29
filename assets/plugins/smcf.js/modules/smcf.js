@@ -11,7 +11,7 @@ const smcf = {
         return "~" + num;
     },
     say(str) {
-        put("#PlayerName " + str);
+        put("#PlayerName => " + str);
         put("say " + str);
         return str;
     },
@@ -86,7 +86,7 @@ const smcf = {
     put(str) {
         // 适配编译器
         // document.write(str + EOL);
-        result.value += ('\n' + str);
+        result.innerText += (str + '\n');
         return str;
     },
     setblock(block,xyz) {
