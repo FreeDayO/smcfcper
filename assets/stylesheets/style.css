@@ -198,7 +198,7 @@ footer>p {
 	overflow-x: auto;
 	animation: textCurColor 15s infinite;
 	outline: none;
-	background: url("../images/freelucker.png") fixed top right no-repeat #000;
+	background: url("../images/freelucker.png") fixed top right no-repeat #181a1b;
 	background-size: contain;
 }
 div#code:empty:before {
@@ -354,25 +354,9 @@ div.subWindow:hover>* {
 		margin-top: 25px;
 	}
 }
-@media (prefers-color-scheme: dark) {
-	/* 自适应夜间主题 */
-	html {
-		background-color: #181a1b !important;
-		color: white;
-	}
-	button.icon[tooltip="夜间"] {
-		display: none;
-	}
-	button.icon[tooltip="日间"] {
-		display: block;
-	}
-	div.box {
-		background-color: rgba(24, 26, 27, 0.67);
-	}
 	footer {
 		animation: color 15s infinite;
 	}
-}
 
 html {
 	--display-fonts: "HarmonyOS Sans", 方正兰亭黑, 微软雅黑, "Microsoft Yahei";
@@ -385,11 +369,11 @@ html {
 }
 
 /* 代码高亮颜色 */
-.cb {color: #ff1493 !important;}
+.ͼb {color: #ff1493 !important;}
 .ͼe {color: #6a9955 !important;}
 .ͼm {font-style: italic;}
 .cm-line {/*background-color: transparent !important;*/ border-top: transparent solid 0.25px; border-bottom: transparent solid 0.25px;}
 .cm-activeLine {background-color: unset !important; border-top: #00bfff solid 0.25px; border-bottom: #00bfff solid 0.25px;}
-.cm-tooltip {background-color: #000 !important; border-color: #444 !important;}
+.cm-tooltip {color: #faebd7; background-color: #000 !important; border-color: #444 !important;}
 .cm-content {font-family: "fira code" !important; caret-color: #fff !important;}
 .cm-line {color: #00bfff; background-color: #4442; caret-color: #fff !important;}
