@@ -3,8 +3,9 @@ import css from "./modules/cper.done.css" with {type: "css"};
 
 
 export default () => {
+	globalThis.put = (...any) => {findEle("[mcfcode]").innerText += any + '\n';}
 	msg("fa-solid fa-message", "欢迎使用 smcfcper! ~(￣▽￣~)", 3);
-	findEles("version").forEach(e => e.innerText = `${smcfcper.info.verName} (${smcfcper.info.verType})`);
+	findEles("version").forEach(e => e.innerText = `${cper.verType} ${cper.verName} (${cper.verCode})`);
 
 	cper.log("执行最后的操作");
 	setTimeout(() => {
@@ -30,6 +31,6 @@ func("SMCFcper");`,
 		});
 	})();
 
-	var clipboard = new ClipboardJS(".copy");
+	new ClipboardJS("[copy]");
 
 }

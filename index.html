@@ -41,25 +41,24 @@
 			<text>少女祈祷中...</text>
 		</load>
 
-		<main>
-		<a href="."><tab class="title" class="tab"><span style="color: #000; background: #fff;">SMCF</span><span style="color: #fff; background: #000;"><sup style="position: absolute; margin-top: -8px;">cper</sup></span></tab></a>
+		<popup>
+			<span style="display: flex;align-items: center;justify-content: space-between;">编译结果
+			<btns>
+				<button copy data-clipboard-target="[mcfcode]" type="button" tooltip="复制" class="icon" onclick="msg.crt('fa-solid fa-message', '复制完毕 ♪(´▽｀)', 3);"><i class="fa-solid fa-copy"></i></button>
+				<button type="button" tooltip="保存" class="icon" onclick="cper.save();"><i class="fa-solid fa-floppy-disk"></i></button>
+				<button type="button" tooltip="关闭" class="icon" onclick="cper.closeRs();"><i class="fa-solid fa-xmark" style="color: red;"></i></button>
+			</btns></span>
+			<pre mcfcode></pre>
+			<div result contenteditable="true"></div>
+		</popup>
 
-			<button type="button" tooltip="编译" class="icon" onclick="smcfcper.cp();"><i class="fa-solid fa-code"></i></button>
+		<main>
+			<tab class="title" class="tab" onclick="cper.cp();"><span style="color: #000; background: #fff;">SMCF</span><span style="color: #fff; background: #000;"><sup style="position: absolute; margin-top: -8px;">cper</sup></span></tab>
+			
 			<ide>
 				<div smcfcode></div>
 			</ide>
 		</main>
-
-		<popup style="/* display: none; */">
-			编译结果:
-			<div result contenteditable="true"></div>
-		</popup>
-
-		<!-- 为循环优化算法做准备 -->
-		<div class="subWindow" style="display: none;">
-			<pre><code class="language-mcf" id="auxiliary"></code></pre>
-			<pre><code class="language-mcf" id="loops"></code></pre>
-		</div>
 
 		<div class="box" id="aboutWindow" style="display: none;">
 			<label><img src="assets/images/smcfcper.icon.png" width="26px" height="26px" alt="smcfcper.icon.png"> 关于</label>
@@ -83,7 +82,7 @@
 				<li> <a href="https://github.com/FreeDayO/smcf.js">FreeDayO/smcf.js</a></li>
 				<li> <a href="https://github.com/tonsky/FiraCode">tonsky/FiraCode</a></li>
 				<li> <a href="https://github.com/FortAwesome/Font-Awesome">FortAwesome/Font-Awesome</a></li>
-				<li> <a href="https://github.com/highlightjs/highlight.js">highlightjs/highlight.js</a></li>
+				<li> <a href="https://www.npmjs.com/package/mcfhighlight">Love-Kogasa/mcfhighlight</a></li>
 				<li> <a href="https://github.com/jquery/jquery">jquery/jquery</a></li>
 				<li> <a href="https://github.com/XeroAlpha/caidlist">XeroAlpha/caidlist</a></li>
 				<li> <a href="https://github.com/Stuk/jszip">Stuk/jszip</a></li>
@@ -91,20 +90,6 @@
 			</p>
 			<button class="normal" onclick="$('#aboutWindow').css('display', 'none');">好</button>
 		</div>
-
-		<sidebar style="display: none;">
-			<p>侧栏</p>
-			<dl id="sidebar">
-				<!-- <dt><span>
-					<button class="icon" tooltip="夜间" onclick="smcfcper.theme('dark');"><i class="fa-solid fa-cloud-moon"></i></button>
-					<button class="icon" tooltip="日间" onclick="smcfcper.theme('light');"><i class="fa-solid fa-sun"></i></button>
-				</span></dt> -->
-				<dt><button class="icon" tooltip="编译姬"><i class="fa-solid fa-code"></i></button></dt>
-				<dt><button class="icon" tooltip="设置"><i class="fa-solid fa-gear"></i></button></dt>
-				<dt><button class="icon" tooltip="关于" onclick="$('#aboutWindow').css('display', 'block');"><i class="fa-solid fa-face-smile"></i></button></dt>
-			</dl>
-		</sidebar>
-
 
 		<footer>
 			<p>
@@ -115,14 +100,6 @@
 		</footer>
 
 		<script type="text/javascript">
-			document.getElementById("fileInput").addEventListener("change", function() {
-				let reader = new FileReader();
-				reader.readAsText(fileInput.files[0], "utf-8");
-				reader.onload = function(e) {
-					code.innerText = this.result;
-				};
-				smcfcper.msg("打开完毕");
-			});
 			$("#aboutWindow").bind("mousedown", moveHandler);
 			function moveHandler(evt) {
 				var $trgt = $(event.target);
@@ -143,6 +120,7 @@
 				});
 			}
 		</script>
+		<link rel="stylesheet" type="text/css" href="assets/plugins/mcfhighlight/code.css">
 		<!-- <script type="text/javascript" src="https://interactive-examples.mdn.mozilla.net/js/editor-js.js"></script> -->
 	</body>
 </html>

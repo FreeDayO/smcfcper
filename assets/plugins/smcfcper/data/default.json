@@ -4,5 +4,6 @@
 	"checkUpdate": true,
 	"debugMode": 0,
 	"enableAutoComplate": 0,
-	"enableHotkey": true
+	"enableHotkey": true,
+	"keepAlive": false
 }

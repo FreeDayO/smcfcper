@@ -1,10 +1,7 @@
 export const reloadHotkey = () => {
 	smcfcper.log("正在注册热键");
 	document.addEventListener("keydown", event => {
-		if(event.key == "Tab") {
-			findEle("[aria-selected=\"true\"]").click();
-			event.preventDefault();
-		}
+		if(event.key == "Tab") {event.preventDefault();}
 		(event.ctrlKey && event.key == "Enter")? smcfcper.cp(): 0;
 		(event.key == "Escape")? smcfcper.exit(): 0;
 		(event.ctrlKey && (event.key == "c" || event.key == "C"))? smcfcper.copy(): 0;
