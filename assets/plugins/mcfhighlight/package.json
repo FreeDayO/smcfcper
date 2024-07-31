@@ -1,0 +1,16 @@
+{
+  "name": "mcfhighlight",
+  "version": "1.0.0",
+  "description": "mcfunction highlight module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mcfunction",
+    "minecraft",
+    "highlight"
+  ],
+  "author": "LiYingchao",
+  "license": "UNLICENSED"
+}

@@ -1,0 +1,19 @@
+.mcf-cmd {
+    color : purple;
+}
+
+.mcf-arg {
+    color : lightgreen;
+}
+
+.mcf-type {
+    color : yellow;
+}
+
+.mcf-num {
+    color : pink;
+}
+
+.mcf-note {
+    color : rgb( 100, 100, 100 );
+}
