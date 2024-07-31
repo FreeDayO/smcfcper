@@ -98,6 +98,9 @@ body {
 	font-size: 16px;
 	border-radius: 10px;
 }
+[result] {
+	pointer-events: none;
+}
 .title {
 	position: fixed;
 	font-family: "fira code";
@@ -141,19 +144,8 @@ dl#sidebar>dt>button>i {
 	flex-direction: column;
 	height: 100%;
 }
-noscript>dialog {
+noscript>load {
 	z-index: 114514;
-}
-dialog {
-	margin-top: -20px;
-	z-index: 100;
-	font-size: 32px;
-	top: calc(50vh);
-	color: white;
-	background: black;
-	border-radius: 10px;
-	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-		
 }
 a {
 	color: deeppink;
@@ -317,6 +309,19 @@ div.subWindow:hover>* {
 	opacity: 1;
 	max-height: 1000px;
 }
+popup {
+	position: fixed;
+	left: 8vw;
+	/* opacity: 0; */
+	padding: 2rem;
+	font-size: 1.2rem;
+	border: var(--font-color) solid 2px;
+	border-radius: 5px;
+	min-height: 40vh;
+	min-width: 80vw;
+	z-index: 100;
+	transition: opacity 0.6s;
+}
 
 @media screen and (min-width: 1000px) {
 	/* 适配pc显示 */
@@ -377,3 +382,29 @@ html {
 .cm-tooltip {color: #faebd7; background-color: #000 !important; border-color: #444 !important;}
 .cm-content {font-family: "fira code" !important; caret-color: #fff !important;}
 .cm-line {color: #00bfff; background-color: #4442; caret-color: #fff !important;}
+@media (prefers-color-scheme: light) {
+	:root {
+		--font-color: #181a1b;
+		color-scheme: light;
+	}
+	body {
+		background-color: #faebd7;
+	}
+	
+	[smcfcode] {
+		background-color: #faebd7;
+	}
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--font-color: #faebd7;
+		color-scheme: dark;
+	}
+	body {
+		background-color: #181a1b;
+	}
+	
+	[smcfcode] {
+		background-color: #181a1b;
+	}
+}
