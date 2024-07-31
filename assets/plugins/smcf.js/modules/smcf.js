@@ -84,9 +84,7 @@ const smcf = {
         put("clear " + str + ' ' + h);
     },
     put(str) {
-        // 适配编译器
-        // document.write(str + EOL);
-        result.innerText += (str + '\n');
+        document.write(str + EOL);
         return str;
     },
     setblock(block,xyz) {
@@ -95,7 +93,4 @@ const smcf = {
         return xyz;
     }
     //基础功能到此完毕
-    // 嘿嘿啊哈哈哈
 }
-
-globalThis.put = smcf.put;
