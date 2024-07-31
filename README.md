@@ -2,11 +2,11 @@
 
 ## <img src="assets/images/smcfcper.webp" width="28"> SMCFcper
 
-*SMCFcper* 是 *SMCFCompiler* 的缩写, 即 *SMCF 编译器*
+SMCFcper 编译姬是一个基于 JS 语言的编译器, 她可以将 SMCF 代码编译为 MCFunction 文件, 并在 Minecraft Bedrock Edition 上运行 (这句话由 AI 生成)
 
 ### 📰 公告
 ```text 公告.txt
-v2 版本的编译姬马上就能和大家见面啦! 请各位主人敬请期待哦! (o ^▽ ^)o☆
+编译姬已经升级到 v2.0-Dev 版本, 新增了一些特性, 请更新到最新版本以获得更好的体验! (o ^▽ ^)o☆
 ```
 
 ---
@@ -50,14 +50,21 @@ SMCFcper 编译姬的诞生离不开这些项目:
 1. [FreeDayO/smcf.js](https://github.com/FreeDayO/smcf.js)
 2. [tonsky/FiraCode](https://github.com/tonsky/FiraCode)
 3. [FortAwesome/Font-Awesome](https://github.com/FortAwesome/Font-Awesome)
-4. [highlightjs/highlight.js](https://github.com/highlightjs/highlight.js)
+4. [Love-Kogasa/mcfhighlight](https://www.npmjs.com/package/mcfhighlight)
 5. [jquery/jquery](https://github.com/jquery/jquery)
 6. [XeroAlpha/caidlist](https://github.com/XeroAlpha/caidlist)
 7. [Stuk/jszip](https://github.com/Stuk/jszip)
+8. [zenorocha/clipboard.js](https://github.com/zenorocha/clipboard.js)
 
 ---
 
-## 💦 贡献者
+## 关于
+
+### 🕊️ 兼容性
+
+推荐使用 **123及以上版本的** Chrome/Edge 浏览器, 其他浏览器或更早的版本将无法正常使用
+
+### 💦 贡献者
 
 [![仓库贡献者](https://contrib.rocks/image?repo=XiaozhiSans/smcfcper)](https://github.com/XiaozhiSans/smcfcper/graphs/contributors)
 
