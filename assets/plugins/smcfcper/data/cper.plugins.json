@@ -3,6 +3,7 @@
 	["*cper.init.js", "smcfcper", "smcfcper 核心插件"],
 	["*clipboard.min.js", "clipboard.js", "剪贴板 js"],
 	["smcf.init.js", "smcf.js", "smcf"],
+	["index.js", "mcfhighlight", "mcf高亮"],
 	["dist/jszip.min.js", "jszip@3.10.1", "jszip v3.10.1"],
 	["*clib.static.js", "commonlib", "commonlib 静态版"],
 	["sw.init.js", "serviceworker", "pwa sw 插件 for cper"],

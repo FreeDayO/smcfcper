@@ -18,7 +18,11 @@ export default () => {
 		const {basicSetup, EditorView} = CM["codemirror"];
 		const {javascript, javascriptLanguage, scopeCompletionSource} = CM["@codemirror/lang-javascript"];
 		window.view = new EditorView({
-			doc: `// 欢迎使用 smcfcper 编译姬 o(^▽^)o \n`,
+			doc: `// 欢迎使用 SMCFcper 编译姬 o(^▽^)o
+const func = (name) => {
+	smcf.say(\`Hello, \${name}!\`);
+};
+func("SMCFcper");`,
 			extensions: [basicSetup, javascript(), javascriptLanguage.data.of({
 				autocomplete: scopeCompletionSource(globalThis)
 			})],

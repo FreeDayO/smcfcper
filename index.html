@@ -19,7 +19,7 @@
 
 		<!-- 预加载项 -->
 		<link rel="stylesheet" type="text/css" href="assets/stylesheets/style.css">
-		<script type="text/javascript" src="assets/plugins/jquery@3.5.1/jquery.min.js"></script>
+		<script type="text/javascript" src="assets/plugins/jquery@3.7.1/jquery.js"></script>
 		<script type="text/javascript" src="assets/plugins/codemirror6/codemirror.js"></script>
 		<script type="text/javascript" src="assets/plugins/commonlib/clib.static.js"></script>
 		<script type="text/javascript" src="assets/plugins/clipboard.js/clipboard.min.js"></script>
@@ -30,10 +30,10 @@
 
 	<body>
 		<noscript>
-			<dialog open>
-				smcfcper 需要 JavaScript 权限才能正常工作<br>
-				请检查您的浏览器设置后再试<br>
-			</dialog>
+			<load>
+				<i class="load-icon"></i>
+				<text style="color: #ff0; text-align: center;">SMCFcper 需要 JavaScript 权限才能工作<br>请确保你开启了 JavaScript 权限</text>
+			</load>
 		</noscript>
 
 		<load>
@@ -50,10 +50,10 @@
 			</ide>
 		</main>
 
-		<div id="popup" style="display: none;">
+		<popup style="/* display: none; */">
 			编译结果:
 			<div result contenteditable="true"></div>
-		</div>
+		</popup>
 
 		<!-- 为循环优化算法做准备 -->
 		<div class="subWindow" style="display: none;">
